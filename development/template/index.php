@@ -18,5 +18,4 @@ $isAsync = JRequest::GetVar('async',0);
 
 // $my_custom_param = $activeMenuItem->params->get('my_custom_param','default value');
 
-YooTemplateCore::Render();
-include 'layouts/index.php';
+echo YooTemplateCore::Render();

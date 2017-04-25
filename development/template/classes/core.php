@@ -102,14 +102,13 @@ class YooTemplateCore
 
 	static function Render()
 	{
-		if(self::$isAsync) {
-			include self::$layoutPath.'index.php';
-		} else {
-			echo self::RenderPage();
-		}
+		ob_start();
+		include self::$layoutPath.'index.php';
+		$html = ob_get_clean();
+		return $html;
 	}
 
-	static function RenderPage()
+	static function RenderPageInner()
 	{
 		ob_start();
 		$id = 'default';

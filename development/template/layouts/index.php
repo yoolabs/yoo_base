@@ -5,8 +5,9 @@
 $app             = JFactory::getApplication();
 $doc             = JFactory::getDocument();
 $user            = JFactory::getUser();
-$templateMode    = $this->params->get('templateMode');
-$this->setMetaData('generator','');
+$renderer        = YooTemplateCore::$renderer;
+$templateMode    = $renderer->params->get('templateMode');
+$renderer->setMetaData('generator','');
 
 JHtml::_('jquery.framework');
 
@@ -14,19 +15,19 @@ JHtml::_('jquery.framework');
 // this will tell widgetkit not to load uikit css another time.
 JFactory::GetConfig()->set('widgetkit',1);
 
-$doc->addStylesheet('templates/' . $this->template . '/css/widgetkit.css');
-$doc->addStylesheet('templates/' . $this->template . '/css/template.css');
-$doc->addScript('templates/' . $this->template . '/warp/vendor/uikit/js/uikit.js');
-$doc->addScript('templates/' . $this->template . '/js/ylib.default.min.js');
-$doc->addScript('templates/' . $this->template . '/js/yootemplate.js');
-$doc->addScript('templates/' . $this->template . '/js/template.js');
+$doc->addStylesheet('templates/' . $renderer->template . '/css/widgetkit.css');
+$doc->addStylesheet('templates/' . $renderer->template . '/css/template.css');
+$doc->addScript('templates/' . $renderer->template . '/warp/vendor/uikit/js/uikit.js');
+$doc->addScript('templates/' . $renderer->template . '/js/ylib.default.min.js');
+$doc->addScript('templates/' . $renderer->template . '/js/yootemplate.js');
+$doc->addScript('templates/' . $renderer->template . '/js/template.js');
 
 
 ?>
 
-<?php if(!$isAsync): ?>
+<?php if(!YooTemplateCore::$isAsync): ?>
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="<?php echo $this->language; ?>" lang="<?php echo $this->language; ?>" dir="<?php echo $this->direction; ?>">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="<?php echo $renderer->language; ?>" lang="<?php echo $renderer->language; ?>" dir="<?php echo $renderer->direction; ?>">
 <head>
 
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=3.0, user-scalable=yes"/>
@@ -59,10 +60,10 @@ $doc->addScript('templates/' . $this->template . '/js/template.js');
 <?php endif; ?>
 
 
-			<?php echo YooTemplateCore::RenderPage(); ?>
+			<?php echo YooTemplateCore::RenderPageInner(); ?>
 
 
-<?php if(!$isAsync): ?>
+<?php if(!YooTemplateCore::$isAsync): ?>
 
 		</div>
 	</div>
