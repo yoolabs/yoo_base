@@ -1,7 +1,6 @@
-
 <?php
+<%= banner %>
 
-defined('_JEXEC') or die;
 
 $app             = JFactory::getApplication();
 $doc             = JFactory::getDocument();
@@ -49,7 +48,7 @@ $doc->addScript('templates/' . $this->template . '/js/template.js');
 
 </head>
 
-<body class="site <?php if(YooGrid::$hasActiveItem) echo 'detailview'; else echo 'home'; ?>">
+<body class="site">
 
 	<!-- Header -->
 	<?php echo YooTemplateCore::RenderPartial('header'); ?>
@@ -67,8 +66,6 @@ $doc->addScript('templates/' . $this->template . '/js/template.js');
 
 		</div>
 	</div>
-
-	<jdoc:include type="modules" name="debug" style="none" />
 
 	<?php echo YooTemplateCore::RenderPartial('footer'); ?>
 

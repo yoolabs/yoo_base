@@ -4,7 +4,7 @@
 
 						<!-- <div class="uk-clearfix"> -->
 
-						<a class="brand uk-float-left yoogrid-link" id="logo" href="<?php echo $this->baseurl; ?>">
+						<a class="brand uk-float-left yoogrid-link" id="logo" href="<?php echo JURI::Base(); ?>">
 							<jdoc:include type="modules" name="logo" style="none" />
 						</a>
 

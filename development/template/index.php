@@ -1,17 +1,18 @@
-
 <?php
+<%= banner %>
 
 defined('_JEXEC') or die;
 
 require_once __DIR__.'/classes/core.php';
 YooTemplateCore::Init(__DIR__);
+YooTemplateCore::$renderer = $this;
 
 
 $app = JFactory::GetApplication();
 $activeMenuItem = $app->getMenu()->getActive();
 $isHome = ($activeMenuItem->home=='1');
-YooTemplateCore::$jsSetup->isHome = $isHome;
-YooTemplateCore::$jsSetup->transitionDuration = 1000;
+YooTemplateCore::$jsData->isHome = $isHome;
+YooTemplateCore::$jsData->transitionDuration = 1000;
 
 $isAsync = JRequest::GetVar('async',0);
 

@@ -1,4 +1,6 @@
 <?php
+<%= banner %>
+
 	$bgimage = YooGrid::$home->params->get('bgimage',false);
 
 ?>
@@ -38,3 +40,5 @@
 
 </div>
 </section>
+
+<jdoc:include type="modules" name="debug" style="none" />

@@ -1,13 +1,14 @@
 <?php
+<%= banner %>
 
-defined('JPATH_PLATFORM') or die;
-
-require_once __DIR__.'/helper.php';
+require_once __DIR__.'/helper.menu.php';
 
 class YooTemplateCore
 {
 
 	static $initialized = false;
+	static $renderer = false;
+	static $basePath;
 	static $layoutPath;
 	static $isAsync;
 	static $list;
@@ -37,15 +38,15 @@ class YooTemplateCore
 
 		self::$jsData   = new StdClass();
 
-		self::$list      = YooTemplateHelper::getList($params);
-		self::$base      = YooTemplateHelper::getBase($params);
-		self::$active    = YooTemplateHelper::getActive($params);
-		self::$home      = YooTemplateHelper::getHome($params);
+		self::$list      = YooTemplateHelperMenu::getList($params);
+		self::$base      = YooTemplateHelperMenu::getBase($params);
+		self::$active    = YooTemplateHelperMenu::getActive($params);
+		self::$home      = YooTemplateHelperMenu::getHome($params);
 
 		// self::prepareJsData();
 
-		$active_id = $active->id;
-		$path      = $base->tree;
+		// $active_id = self::$active->id;
+		// $path      = self::$base->tree;
 
 	}
 

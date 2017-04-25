@@ -1,23 +1,9 @@
 <?php
+<%= banner %>
+
 // nothing but a renamed copy of mod_menu helper class
-/**
- * @package     Joomla.Site
- * @subpackage  mod_menu
- *
- * @copyright   Copyright (C) 2005 - 2015 Open Source Matters, Inc. All rights reserved.
- * @license     GNU General Public License version 2 or later; see LICENSE.txt
- */
 
-defined('_JEXEC') or die;
-
-/**
- * Helper for mod_menu
- *
- * @package     Joomla.Site
- * @subpackage  mod_menu
- * @since       1.5
- */
-class YooTemplateHelper
+class YooTemplateHelperMenu
 {
 	/**
 	 * Get a list of the menu items.
