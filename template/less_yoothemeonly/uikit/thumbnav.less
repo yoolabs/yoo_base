@@ -1,0 +1,31 @@
+// Copyright (C) YOOtheme GmbH, YOOtheme Proprietary Use License (http://www.yootheme.com/license) */
+
+//
+// Component: Thumbnav
+//
+// ========================================================================
+
+// Variables
+// ========================================================================
+
+//
+// New
+//
+
+@thumbnav-border-radius:                 3px;
+
+
+// Component
+// ========================================================================
+
+.hook-thumbnav() { border-radius: @thumbnav-border-radius; }
+
+
+// Miscellaneous
+// ========================================================================
+
+.hook-thumbnav-misc() {
+
+    .uk-thumbnav > * > * > img { border-radius: @thumbnav-border-radius; }
+
+}

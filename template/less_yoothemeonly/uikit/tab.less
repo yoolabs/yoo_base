@@ -1,0 +1,65 @@
+// Copyright (C) YOOtheme GmbH, YOOtheme Proprietary Use License (http://www.yootheme.com/license) */
+
+//
+// Component: Tab
+//
+// ========================================================================
+
+
+// Variables
+// ========================================================================
+
+@tab-border:                                    @global-border;
+@tab-border-width:                              1px;
+@tab-padding-horizontal:                        12px;
+@tab-padding-vertical:                          8px;
+@tab-padding-top:                               @tab-padding-vertical;
+@tab-padding-bottom:                            @tab-padding-vertical;
+@tab-margin-horizontal:                         5px;
+@tab-margin-vertical:                           5px;
+@tab-color:                                     @global-muted-color;
+@tab-hover-border:                              @global-border;
+@tab-hover-background:                          @global-background;
+@tab-hover-color:                               @global-color;
+@tab-active-border:                             @global-border;
+@tab-active-background:                         @global-background;
+@tab-active-color:                              @tab-hover-color;
+@tab-disabled-color:                            @global-muted-color;
+
+//
+// New
+//
+
+@tab-font-family:                               @global-small-font-family;
+@tab-font-size:                                 @global-small-font-size;
+@tab-text-transform:                            @global-text-transform;
+
+
+// Component
+// ========================================================================
+
+//
+// Items
+//
+
+.hook-tab() {
+    font-family: @tab-font-family;
+    font-size: @tab-font-size;
+    text-transform: @tab-text-transform;
+}
+
+
+// Hover
+.hook-tab-hover() {}
+
+// Active
+.hook-tab-active() {}
+
+// Disabled
+.hook-tab-disabled() {}
+
+
+// Miscellaneous
+// ========================================================================
+
+.hook-tab-misc() {}

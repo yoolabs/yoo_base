@@ -1,0 +1,98 @@
+// Copyright (C) YOOtheme GmbH, YOOtheme Proprietary Use License (http://www.yootheme.com/license) */
+
+//
+// Component: Dropdown
+//
+// ========================================================================
+
+
+// Variables
+// ========================================================================
+
+@dropdown-z-index:                              @global-z-index + 20;
+@dropdown-padding:                              50px;
+@dropdown-background:                           @global-dark-background;
+@dropdown-color:                                @global-contrast-color;
+@dropdown-font-size:                            12px;
+@dropdown-divider-border:                       fade(@global-contrast-color, 10%);
+
+@dropdown-small-padding:                        20px;
+
+@dropdown-navbar-background:                    @global-dark-background;
+@dropdown-navbar-color:                         @global-contrast-color;
+
+//
+// New
+//
+
+@dropdown-font-family:                         @global-small-font-family;
+@dropdown-font-weight:                         @global-small-font-weight;
+@dropdown-font-line-height:                    25px;
+
+@dropdown-navbar-nav-header-font-weight:       300;
+@dropdown-navbar-panel-link-color:             @global-primary-color;
+@dropdown-navbar-panel-link-text-transform:    @global-text-transform;
+@dropdown-navbar-panel-link-hover-color:       fade(@dropdown-navbar-panel-link-color, 80%);
+
+@dropdown-grid-padding:                        (2 * @global-margin);
+
+
+// Component
+// ========================================================================
+
+.hook-dropdown() {
+    font-family: @dropdown-font-family;
+    font-weight: @dropdown-font-weight;
+    line-height: @dropdown-font-line-height;
+}
+
+/* Nav in dropdown
+ ========================================================================== */
+
+.uk-dropdown .uk-nav { margin: 0; }
+
+// Modifier: `uk-dropdown-navbar`
+// ========================================================================
+
+.hook-dropdown-navbar() {}
+
+
+// Miscellaneous
+// ========================================================================
+
+.hook-dropdown-misc() {
+
+    .uk-dropdown-navbar .uk-nav-navbar .uk-nav-header {
+        font-weight: @dropdown-navbar-nav-header-font-weight;
+    }
+
+    /* Grid and panel in dropdown
+     ========================================================================== */
+
+    /* uk-dropdown-navbar panel link color */
+
+    .uk-dropdown {
+
+        .uk-panel > a:not([class]) {
+            color: @dropdown-navbar-panel-link-color;
+            text-transform: @dropdown-navbar-panel-link-text-transform;
+        }
+
+        .uk-panel > a:not([class]):hover { color: @dropdown-navbar-panel-link-hover-color; }
+
+    }
+
+    /*
+     * Set column divider
+     */
+
+
+    .uk-dropdown:not(.uk-dropdown-stack) .uk-dropdown-grid > [class*='uk-width-'] {
+        padding-left: @dropdown-grid-padding;
+        padding-right: @dropdown-grid-padding;
+    }
+
+    .uk-dropdown:not(.uk-dropdown-stack) .uk-dropdown-grid > [class*='uk-width-']:not(.uk-width-1-1) {border-left: @dropdown-divider-border-width solid @dropdown-divider-border; }
+    .uk-dropdown:not(.uk-dropdown-stack) .uk-dropdown-grid > [class*='uk-width-']:not(.uk-width-1-1):last-child { border-right: @dropdown-divider-border-width solid @dropdown-divider-border; }
+
+}

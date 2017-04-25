@@ -1,0 +1,71 @@
+// Copyright (C) YOOtheme GmbH, YOOtheme Proprietary Use License (http://www.yootheme.com/license) */
+
+//
+// Component: Table
+//
+// ========================================================================
+
+
+// Variables
+// ========================================================================
+
+@table-margin-vertical:                         @global-margin;
+@table-padding-vertical:                        10px;
+@table-padding-horizontal:                      10px;
+
+@table-striped-background:                      @global-light-background;
+
+@table-caption-color:                           @global-muted-color;
+@table-caption-font-size:                       round((@global-font-size * 0.85)); // 12px / 14px
+
+@table-hover-background:                        @global-light-background;
+
+//
+// New
+//
+
+@table-text-align:                              center;
+@table-border:                                  @global-border;
+
+@table-heading-font-family:                     @global-small-font-family;
+@table-heading-font-size:                       @global-small-font-size;
+@table-heading-color:                           @global-color;
+@table-heading-text-transform:                  @global-text-transform;
+
+
+// Component
+// ========================================================================
+
+.hook-table() { text-align: @table-text-align; }
+
+
+// Miscellaneous
+// ========================================================================
+
+.hook-table-misc() {
+
+    .uk-table thead th {
+        border-top: 1px solid @table-border;
+        border-bottom: 1px solid @table-border;
+    }
+
+    .uk-table th {
+
+        text-align: @table-text-align;
+        font-family: @table-heading-font-family;
+        font-size: @table-heading-font-size;
+        color: @table-heading-color;
+        text-transform: @table-heading-text-transform;
+    }
+
+    .uk-table td { border-right: 1px solid @table-border; }
+
+    .uk-table td:first-child { border-left: none; }
+    .uk-table td:last-child { border-right: none; }
+
+    .uk-table :not(:first-child) > th {
+        border-top: 1px solid @table-border;
+        border-bottom: 1px solid @table-border;
+    }
+
+}

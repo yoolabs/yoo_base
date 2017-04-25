@@ -1,0 +1,301 @@
+// Copyright (C) YOOtheme GmbH, YOOtheme Proprietary Use License (http://www.yootheme.com/license) */
+
+//
+// Component: Nav
+//
+// ========================================================================
+
+
+// Variables
+// ========================================================================
+
+@nav-padding-vertical:                          0;
+@nav-padding-horizontal:                        0;
+
+
+@nav-header-padding-vertical:                   @nav-padding-vertical;
+@nav-header-padding-horizontal:                 @nav-padding-horizontal;
+@nav-header-font-size:                          round((@global-font-size * 1.12)); // 18px
+@nav-header-font-weight:                        400;
+@nav-header-text-transform:                     @global-heading-text-transform;
+@nav-header-margin-top:                         @global-margin;
+
+@nav-divider-margin-horizontal:                 @nav-padding-horizontal;
+
+@nav-subtitle-font-size:                        12px;
+@nav-subtitle-line-height:                      18px;
+
+@nav-sub-padding-left:                          15px;
+
+@nav-parent-icon-width:                         @global-line-height;
+
+@nav-side-color:                                fade(@global-color, 50%);
+@nav-side-hover-background:                     rgba(0,0,0,0);
+@nav-side-hover-color:                          @global-color;
+@nav-side-active-background:                    rgba(0,0,0,0);
+@nav-side-active-color:                         @global-color;
+@nav-side-header-color:                         @global-dark-color;
+@nav-side-divider-border:                       @global-border;
+@nav-side-nested-color:                         @global-color;
+@nav-side-nested-hover-color:                   @global-color;
+
+@nav-dropdown-color:                            @global-contrast-color;
+@nav-dropdown-hover-background:                 rgba(0,0,0,0);
+@nav-dropdown-hover-color:                      @global-contrast-color;
+@nav-dropdown-header-color:                     @global-primary-color;
+@nav-dropdown-divider-border:                   fade(@global-contrast-color, 10%);
+@nav-dropdown-nested-color:                     @global-contrast-color;
+@nav-dropdown-nested-hover-color:               @global-link-hover-color;
+
+@nav-navbar-color:                              @global-contrast-color;
+@nav-navbar-hover-background:                   rgba(0,0,0,0);
+@nav-navbar-hover-color:                        @global-contrast-color;
+@nav-navbar-header-color:                       @nav-dropdown-header-color;
+@nav-navbar-divider-border:                     fade(@global-contrast-color, 10%);
+@nav-navbar-nested-color:                       @nav-navbar-color;
+@nav-navbar-nested-hover-color:                 @global-contrast-color;
+
+
+@nav-offcanvas-padding-vertical:                15px;
+@nav-offcanvas-padding-horizontal:              40px;
+@nav-offcanvas-color:                           @global-contrast-color;
+@nav-offcanvas-hover-background:                lighten(@offcanvas-bar-background, 5%);
+@nav-offcanvas-hover-color:                     @offcanvas-panel-link-hover-color;
+@nav-offcanvas-active-background:               darken(@offcanvas-bar-background, 10%);
+@nav-offcanvas-active-color:                    @offcanvas-panel-link-hover-color;
+@nav-offcanvas-header-color:                    @nav-dropdown-header-color;
+@nav-offcanvas-divider-border:                  lighten(@offcanvas-bar-background, 5%);
+@nav-offcanvas-nested-color:                    fade(@global-contrast-color, 80%);
+@nav-offcanvas-nested-hover-color:              @offcanvas-panel-link-hover-color;
+
+//
+// New
+//
+
+
+@nav-header-font-family:                        @global-heading-font-family;
+@nav-header-margin-bottom:                      15px;
+
+@nav-navbar-font-weight:                        300;
+@nav-navbar-header-text-transform:              @global-heading-text-transform;
+
+@nav-side-font-size:                            14px;
+@nav-side-line-height:                          22px;
+@nav-side-padding-vertical:                     5px;
+@nav-side-text-transform:                       none;
+
+@nav-font-family:                               @global-small-font-family;
+
+@nav-offcanvas-margin-horizontal:               25px;
+@nav-offcanvas-padding-small-horizontal:        0;
+@nav-offcanvas-header-margin:                   25px;
+@nav-offcanvas-nav-sub-backround:               lighten(@offcanvas-bar-background, 5%);
+
+@nav-offcanvas-header-padding-vertical:         40px;
+@nav-offcanvas-font-family:                     @global-small-font-family;
+@nav-offcanvas-font-size:                       @global-small-font-size;
+@nav-offcanvas-text-transform:                  @global-text-transform;
+
+@nav-dropdown-hover-muted-color:                fade(@nav-navbar-hover-color, 30%);
+@nav-offcanvas-nested-header-padding-vertical:  0;
+
+// Sub-object: `uk-nav-header`
+// ========================================================================
+
+.hook-nav-header() {
+    font-family: @nav-header-font-family;
+    margin-bottom: @nav-header-margin-bottom;
+}
+
+
+// Sub-object: `uk-nav-divider`
+// ========================================================================
+
+.hook-nav-divider() {}
+
+
+// Sub-object: `uk-nav-sub`
+// ========================================================================
+
+.hook-nav-sub() {}
+
+
+// Modifier: `uk-nav-parent-icon`
+// ========================================================================
+
+.hook-nav-parent-icon() {}
+
+
+// Modifier `uk-nav-side`
+// ========================================================================
+
+//
+// Items
+//
+
+.hook-nav-side() {
+    padding: @nav-side-padding-vertical @nav-padding-horizontal;
+    font-size: @nav-side-font-size;
+    line-height: @nav-side-line-height;
+    text-transform: @nav-side-text-transform;
+}
+
+// Hover
+.hook-nav-side-hover() {}
+
+// Active
+.hook-nav-side-active() {}
+
+//
+// Sub-object: `uk-nav-header`
+//
+
+.hook-nav-side-header() {}
+
+//
+// Sub-object: `uk-nav-divider`
+//
+
+.hook-nav-side-divider() {}
+
+
+// Modifier `uk-nav-dropdown`
+// ========================================================================
+
+//
+// Items
+//
+
+.hook-nav-dropdown() {}
+
+// Hover
+.hook-nav-dropdown-hover() {}
+
+//
+// Sub-object: `uk-nav-header`
+//
+
+.hook-nav-dropdown-header() {}
+
+//
+// Sub-object: `uk-nav-divider`
+//
+
+.hook-nav-dropdown-divider() {}
+
+
+// Modifier `uk-nav-navbar`
+// ========================================================================
+
+//
+// Items
+//
+
+.hook-nav-navbar() { font-weight: @nav-navbar-font-weight; }
+
+// Hover
+.hook-nav-navbar-hover() {}
+
+//
+// Sub-object: `uk-nav-header`
+//
+
+.hook-nav-navbar-header() { text-transform: @nav-navbar-header-text-transform; }
+
+//
+// Sub-object: `uk-nav-divider`
+//
+
+.hook-nav-navbar-divider() {}
+
+
+// Modifier `uk-nav-offcanvas`
+// ========================================================================
+
+//
+// Items
+//
+
+.hook-nav-offcanvas() {
+    text-transform: @nav-offcanvas-text-transform;
+    font-family: @nav-offcanvas-font-family;
+    font-size: @nav-offcanvas-font-size;
+}
+
+// Hover
+.hook-nav-offcanvas-hover() {}
+
+// Active
+.hook-nav-offcanvas-active() {}
+
+//
+// Sub-object: `uk-nav-header`
+//
+
+.hook-nav-offcanvas-header() { padding: 0 @nav-offcanvas-header-padding-vertical; }
+
+//
+// Sub-object: `uk-nav-divider`
+//
+
+.hook-nav-offcanvas-divider() {}
+
+
+// Miscellaneous
+// ========================================================================
+
+.hook-nav-misc() {
+
+    .uk-nav { font-family: @nav-font-family; }
+
+    /*
+    *  Nav Side
+    */
+
+    .uk-nav-side .uk-nav-sub > li > a,
+    .uk-nav-side .uk-nav-sub ul > li > a {
+        font-size: @nav-side-font-size;
+        line-height: @nav-side-line-height;
+    }
+
+    /*
+    * Nested Items Hover
+    */
+
+    .uk-nav-side ul:hover a { color: fade(@nav-side-nested-color, 50%); }
+    .uk-nav-side:hover ul a:hover { color: @nav-side-nested-hover-color; }
+
+
+    // Modifier `uk-nav-offcanvas`
+    // ==========================================================================
+
+
+    // Open
+    .uk-nav-offcanvas  {
+
+        .uk-nav-divider { margin: @nav-divider-margin-vertical 40px; }
+
+        .uk-nav-sub {
+            padding-left: @nav-offcanvas-padding-small-horizontal;
+            background: @nav-offcanvas-nav-sub-backround;
+            padding: (2 * @nav-offcanvas-padding-vertical) @nav-offcanvas-padding-horizontal;
+            font-family: @nav-offcanvas-font-family;
+            font-size: @nav-offcanvas-font-size;
+        }
+
+        ul .uk-nav-header { padding: @nav-offcanvas-nested-header-padding-vertical; }
+
+    }
+
+    // Hover for Dropdown
+    .uk-nav-navbar:hover li a,
+    .uk-nav-dropdown:hover li a {
+        color: @nav-dropdown-hover-muted-color;
+        -webkit-transition: color 0.2s ease-in;
+        transition: color 0.2s ease-in;
+    }
+
+    .uk-nav-navbar:hover li a:hover,
+    .uk-nav-dropdown:hover li a:hover { color: @nav-dropdown-hover-color; }
+
+}

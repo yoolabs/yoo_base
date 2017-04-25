@@ -1,0 +1,85 @@
+// Copyright (C) YOOtheme GmbH, YOOtheme Proprietary Use License (http://www.yootheme.com/license) */
+
+//
+// Component: Article
+//
+// ========================================================================
+
+
+// Variables
+// ========================================================================
+
+@article-margin-top:                            (2 * @global-margin-large);
+
+@article-title-font-size:                       round((@global-font-size * 2.6)); // 36px
+@article-title-line-height:                     round((@article-title-font-size * 1.154)); // 42px
+@article-title-text-transform:                  @global-heading-text-transform;
+
+@article-meta-font-size:                        12px;
+@article-meta-line-height:                      18px;
+@article-meta-color:                            @global-muted-color;
+
+@article-lead-color:                            @global-color;
+@article-lead-font-size:                        20px;
+@article-lead-line-height:                      30px;
+
+@article-divider-margin:                        @global-margin-large;
+@article-divider-border:                        @global-border;
+
+//
+// New
+//
+
+@article-meta-font-family:                      @global-small-font-family;
+@article-meta-letter-spacing:                   @global-letter-spacing;
+@article-meta-text-transform:                   @global-text-transform;
+
+@article-lead-font-family:                      @global-font-family;
+@panel-box-article-lead-font-size:              18px;
+@panel-box-article-lead-line-height:            28px;
+
+
+// Sub-object `uk-article-title`
+// ========================================================================
+
+.hook-article-title() {}
+
+
+// Sub-object `uk-article-meta`
+// ========================================================================
+
+.hook-article-meta() {
+    font-family: @article-meta-font-family;
+    letter-spacing: @article-meta-letter-spacing;
+    text-transform: @article-meta-text-transform;
+}
+
+
+// Sub-object `uk-article-lead`
+// ========================================================================
+
+.hook-article-lead() { font-family: @article-lead-font-family; }
+
+
+// Sub-object `uk-article-divider`
+// ========================================================================
+
+.hook-article-divider() {}
+
+
+// Miscellaneous
+// ========================================================================
+
+.hook-article-misc() {
+
+    .uk-panel-box .uk-article-lead {
+        font-size: @panel-box-article-lead-font-size;
+        line-height: @panel-box-article-lead-line-height;
+    }
+
+    h1 + .uk-article-meta,
+    h2 + .uk-article-meta,
+    h3 + .uk-article-meta,
+    h4 + .uk-article-meta { margin-top: -15px; }
+
+}

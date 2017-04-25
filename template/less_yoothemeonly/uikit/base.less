@@ -1,0 +1,131 @@
+// Copyright (C) YOOtheme GmbH, YOOtheme Proprietary Use License (http://www.yootheme.com/license) */
+
+//
+// Component: Base
+//
+// ========================================================================
+
+
+// Variables
+// ========================================================================
+
+@base-body-background:                          @global-background;
+@base-body-font-family:                         @global-font-family;
+@base-body-font-weight:                         @global-font-weight;
+@base-body-font-size:                           @global-font-size;
+@base-body-line-height:                         @global-line-height;
+@base-body-color:                               @global-color;
+
+@base-link-color:                               @global-link-color;
+@base-link-hover-color:                         @global-link-hover-color;
+@base-ins-color:                                @global-color;
+@base-mark-color:                               @global-color;
+
+@base-margin-vertical:                          @global-margin;
+
+@base-heading-font-family:                      @global-heading-font-family;
+@base-heading-font-weight:                      @global-heading-font-weight;
+@base-heading-color:                            @global-dark-color;
+@base-heading-margin-top:                       @global-margin-large;
+@base-heading-text-transform:                   @global-heading-text-transform;
+@base-h1-font-size:                             50px;
+@base-h1-line-height:                           60px;
+@base-h2-font-size:                             42px;
+@base-h2-line-height:                           48px;
+@base-h3-font-size:                             32px;
+@base-h3-line-height:                           38px;
+@base-h4-font-size:                             26px;
+@base-h4-line-height:                           32px;
+@base-h5-font-size:                             @global-font-size;
+@base-h5-line-height:                           @global-line-height;
+@base-h6-font-size:                             round((@global-font-size * 0.85)); // 12px / 14px
+@base-h6-line-height:                           round((@base-h6-font-size * 1.46)); // 18px / 20px
+
+@base-hr-border:                                @global-border;
+
+@base-blockquote-padding-left:                  0;
+@base-blockquote-border:                        transparent;
+@base-blockquote-border-width:                  0;
+@base-blockquote-font-size:                     18px;
+@base-blockquote-line-height:                   28px;
+
+@base-code-font-size:                           round((@global-font-size * 0.85)); // 12px / 14px
+
+@base-pre-background:                           @global-light-background;
+@base-pre-color:                                @global-color;
+@base-pre-font-size:                            round((@global-font-size * 0.85)); // 12px / 14px
+@base-pre-line-height:                          round((@base-pre-font-size * 1.46)); // 18px / 20px
+
+//
+// New
+//
+
+@base-blockquote-margin-vertical:               @global-grid-gutter-large;
+@base-blockquote-color:                         @global-color;
+@base-blockquote-font-family:                   @global-heading-font-family;
+@base-blockquote-text-align:                    center;
+@base-blockquote-small-margin-top:              @global-margin-small;
+@base-blockquote-small-color:                   @global-color;
+
+@base-small-font-family:                        @global-small-font-family;
+@base-small-font-size:                          12px;
+@base-small-letter-spacing:                     0.5px;
+@base-small-font-weight:                        normal;
+@base-small-text-transform:                     @global-text-transform;
+@base-small-font-style:                         normal;
+
+
+// Body
+// ========================================================================
+
+.hook-base-body() {}
+
+
+// Code and preformatted text
+// ========================================================================
+
+.hook-base-code() {}
+
+.hook-base-code-reset() {}
+
+.hook-base-pre() {}
+
+
+// Miscellaneous
+// ========================================================================
+
+.hook-base-misc() {
+
+    /*
+     * Links
+     */
+
+    a {
+        -webkit-transition: color 0.1s ease-in-out;
+        transition: color 0.1s ease-in-out;
+    }
+
+    blockquote {
+
+        margin: 0 0 @base-blockquote-margin-vertical 0;
+        color: @base-blockquote-color;
+        font-family: @base-blockquote-font-family;
+        text-align: @base-blockquote-text-align;
+
+        > small { margin-top: @base-blockquote-small-margin-top; }
+
+        small { color: @base-blockquote-small-color!important; }
+    }
+
+    * + blockquote { margin-top: @base-blockquote-margin-vertical; }
+
+    small {
+        font-family: @base-small-font-family;
+        font-size: @base-small-font-size;
+        letter-spacing: @base-small-letter-spacing;
+        font-weight: @base-small-font-weight;
+        text-transform: @base-small-text-transform;
+        font-style: @base-small-font-style;
+    }
+
+}

@@ -1,0 +1,97 @@
+// Copyright (C) YOOtheme GmbH, YOOtheme Proprietary Use License (http://www.yootheme.com/license) */
+
+//
+// Component: Subnav
+//
+// ========================================================================
+
+
+// Variables
+// ========================================================================
+
+@subnav-margin-horizontal:                      15px;
+@subnav-color:                                  @global-dark-color;
+@subnav-hover-color:                            @global-muted-color;
+@subnav-active-color:                           @global-color;
+@subnav-disabled-color:                         @global-muted-color;
+
+@subnav-line-border:                            @global-border;
+
+@subnav-pill-padding-horizontal:                15px;
+@subnav-pill-hover-background:                  rgba(0,0,0,0);
+@subnav-pill-hover-color:                       @global-color;
+@subnav-pill-active-background:                 @global-dark-background;
+@subnav-pill-active-color:                      @global-contrast-color;
+
+//
+// New
+//
+
+
+@subnav-font-family:                            @global-small-font-family;
+@subnav-font-size:                              @global-small-font-size;
+@subnav-font-weight:                            400;
+@subnav-text-transform:                         @global-text-transform;
+
+@subnav-pill-border-radius:                     @global-border-radius;
+@subnav-pill-border-width:                      1px;
+@subnav-pill-hover-border:                      @global-border;
+@subnav-pill-active-border:                     @subnav-pill-active-background;
+
+
+// Component
+// ========================================================================
+
+//
+// Items
+//
+
+.hook-subnav() {
+    font-family: @subnav-font-family;
+    font-size: @subnav-font-size;
+    font-weight: @subnav-font-weight;
+    text-transform: @subnav-text-transform;
+}
+
+// Hover
+.hook-subnav-hover() {}
+
+// Active
+.hook-subnav-active() {}
+
+
+// Modifier: `uk-subnav-line`
+// ========================================================================
+
+.hook-subnav-line-divider() {}
+
+
+// Modifier: `uk-subnav-pill`
+// ========================================================================
+
+.hook-subnav-pill() {
+    border: @subnav-pill-border-width solid transparent;
+    border-radius: @subnav-pill-border-radius;
+}
+
+// Hover
+.hook-subnav-pill-hover() { border-color: @subnav-pill-hover-border; }
+
+// Active
+.hook-subnav-pill-active() { border-color: @subnav-pill-active-border; }
+
+
+// Disabled state
+// ========================================================================
+
+.hook-subnav-disabled() {}
+
+
+// Miscellaneous
+// ========================================================================
+
+.hook-subnav-misc() {
+
+    .uk-subnav > .uk-disabled > * { border-color: transparent; }
+
+}

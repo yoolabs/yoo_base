@@ -1,0 +1,183 @@
+// Copyright (C) YOOtheme GmbH, YOOtheme Proprietary Use License (http://www.yootheme.com/license) */
+
+//
+// Component: Overlay
+//
+// ========================================================================
+
+
+// Variables
+// ========================================================================
+
+@overlay-panel-padding:                         (@overlay-background-border-width + 15px);
+@overlay-panel-color:                           @global-contrast-color;
+
+
+@overlay-icon-color:                            @global-color;
+
+@overlay-panel-background:                      #fff;
+
+@overlay-icon-color:                            @global-contrast-color;
+
+//
+// New
+//
+
+@overlay-background-border-width:               30px;
+@overlay-background-border:                     rgba(255,255,255,0);
+
+@overlay-background-panel-color:                @global-color;
+@overlay-panel-heading-color:                   @global-dark-color;
+@overlay-panel-icon-color:                      @global-color;
+@overlay-panel-heading-border-width:            50px;
+@overlay-panel-heading-border-height:           1px;
+@overlay-panel-heading-border:                  #e7e7e7;
+@overlay-panel-heading-hover-border:            #e7e7e7;
+
+
+
+// Sub-object `uk-overlay-panel`
+// ========================================================================
+
+.hook-overlay-panel() {
+
+        /* Button */
+        .uk-button-primary {
+            border-color: #fff;
+            color: #fff;
+
+            &:hover {
+                background-color: #fff;
+                color: @global-color;
+            }
+
+            &:active,
+            &:focus,
+            &.uk-active {
+                background-color: #fff;
+                color: @global-color;
+            }
+
+        }
+
+}
+
+// Sub-object `uk-overlay-background`
+// ========================================================================
+
+.hook-overlay-background() {
+    border: @overlay-background-border-width solid @overlay-background-border;
+    -moz-background-clip: padding-box;
+    -webkit-background-clip: padding-box;
+    background-clip: padding-box;
+}
+
+
+// Sub-object `uk-overlay-icon`
+// ========================================================================
+
+.hook-overlay-icon() {}
+
+
+// Miscellaneous
+// ========================================================================
+
+.hook-overlay-misc() {
+
+    .uk-overlay-background,
+    .uk-overlay-background + .uk-overlay-panel,
+    .uk-overlay-background ~ .uk-overlay-panel {
+
+        color: @overlay-background-panel-color;
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 { color: @overlay-panel-heading-color; }
+
+        &.uk-overlay-icon:before { color: @overlay-panel-icon-color; }
+
+    }
+
+    .uk-overlay-panel h1,
+    .uk-overlay-panel h2,
+    .uk-overlay-panel h3,
+    .uk-overlay-panel h4,
+    .uk-overlay-panel h5,
+    .uk-overlay-panel h6 {
+
+        letter-spacing: 0;
+        padding-bottom: @global-margin-small;
+
+        &:before {
+            content: "";
+            display: block;
+            position: absolute;
+            left: 50%;
+            width: @overlay-panel-heading-border-width;
+            margin-left: -(@overlay-panel-heading-border-width / 2);
+            border-top: @overlay-panel-heading-border-height solid @overlay-panel-heading-border;
+        }
+
+        &:after {
+            content: "";
+            display: block;
+            position: absolute;
+            left: 50%;
+            width: 0;
+            margin-left: -(@overlay-panel-heading-border-width / 2);
+            border-top: @overlay-panel-heading-border-height solid @overlay-panel-heading-hover-border;
+            -webkit-transition: width .45s ease-out;
+            transition: width .45s ease-out;
+        }
+    }
+
+    .uk-overlay-panel {
+
+        h1:before,
+        .uk-h1:before { margin-top: (@base-h1-line-height + 15px); }
+
+        h1:after,
+        .uk-h1:after { margin-top: 15px; }
+
+        h2:before,
+        .uk-h2:before { margin-top: (@base-h2-line-height + 15px); }
+
+        h2:after,
+        .uk-h2:after { margin-top: 15px; }
+
+        h3:before,
+        .uk-h3:before { margin-top: (@base-h3-line-height + 15px); }
+
+        h3:after,
+        .uk-h3:after { margin-top: 15px; }
+
+        h4:before,
+        .uk-h4:before { margin-top: (@base-h4-line-height + 15px); }
+
+        h4:after,
+        .uk-h4:after { margin-top: 15px; }
+
+        .uk-heading-large:before { margin-top: (@utility-heading-large-line-height + 15px); }
+        .uk-heading-large:after { margin-top: 15px; }
+
+        .uk-panel-title:before { margin-top: (@panel-title-line-height + 10px); }
+        .uk-panel-title:after { margin-top: 10px; }
+
+    }
+
+
+    .uk-overlay:hover {
+
+        .uk-overlay-panel h1:after,
+        .uk-overlay-panel h2:after,
+        .uk-overlay-panel h3:after,
+        .uk-overlay-panel h4:after,
+        .uk-overlay-panel h5:after,
+        .uk-overlay-panel h6:after { width: @overlay-panel-heading-border-width; }
+
+    }
+
+}

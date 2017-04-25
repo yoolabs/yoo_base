@@ -1,0 +1,77 @@
+// Copyright (C) YOOtheme GmbH, YOOtheme Proprietary Use License (http://www.yootheme.com/license) */
+
+//
+// Component: Pagination
+//
+// ========================================================================
+
+
+// Variables
+// ========================================================================
+
+@pagination-background:                         rgba(0,0,0,0);
+@pagination-line-height:                        @global-line-height;
+@pagination-color:                              @global-color;
+@pagination-hover-background:                   rgba(0,0,0,0);
+@pagination-hover-color:                        @global-color;
+@pagination-onclick-background:                 rgba(0,0,0,0);
+@pagination-onclick-color:                      @global-color;
+
+@pagination-active-background:                  rgba(0,0,0,0);
+@pagination-active-color:                       @global-color;
+
+@pagination-disabled-background:                rgba(0,0,0,0);
+@pagination-disabled-color:                     @global-muted-color;
+
+//
+// New
+//
+
+@pagination-font-size:                          @global-small-font-size;
+@pagination-text-transform:                     @global-text-transform;
+@pagination-letter-spacing:                     @global-letter-spacing;
+
+@pagination-previous-next-color:                @global-color;
+@pagination-previous-next-font-weight:          normal;
+
+@pagination-active-font-size:                   20px;
+
+
+// Component
+// ========================================================================
+
+//
+// Items
+//
+
+.hook-pagination-item() {
+    font-weight: normal;
+    font-size: @pagination-font-size;
+    text-transform: @pagination-text-transform;
+    letter-spacing: @pagination-letter-spacing;
+    opacity: 0.6;
+    -webkit-transition: opacity .3s ease-out;
+    transition: opacity .3s ease-out;
+}
+
+// Link
+.hook-pagination-link() {}
+
+.hook-pagination-link-hover() { opacity: 1; }
+
+.hook-pagination-link-active() {}
+
+// Active
+.hook-pagination-active() {
+    opacity: 1;
+    font-size: @pagination-active-font-size;
+}
+
+// Disabled
+.hook-pagination-disabled() {}
+
+
+// Miscellaneous
+// ========================================================================
+
+.hook-pagination-misc() {}

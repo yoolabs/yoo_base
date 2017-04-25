@@ -1,0 +1,254 @@
+// Copyright (C) YOOtheme GmbH, YOOtheme Proprietary Use License (http://www.yootheme.com/license) */
+
+//
+// Component: Button
+//
+// ========================================================================
+
+
+// Variables
+// ========================================================================
+
+@button-height:                                 @global-height;
+@button-mini-height:                            @global-height-mini;
+@button-small-height:                           @global-height-small;
+@button-large-height:                           @global-height-large;
+
+@button-line-height:                            @global-height;
+@button-mini-line-height:                       @global-height-mini;
+@button-small-line-height:                      @global-height-small;
+@button-large-line-height:                      @global-height-large;
+
+@button-mini-font-size:                         round((@global-font-size * 0.56)); // 9px
+@button-small-font-size:                        round((@global-font-size * 0.68)); // 11px
+@button-large-font-size:                        round((@global-font-size * 0.81)); // 13px
+
+@button-padding-horizontal:                     20px;
+@button-mini-padding-horizontal:                8px;
+@button-small-padding-horizontal:               12px;
+@button-large-padding-horizontal:               24px;
+
+@button-font-size:                              @global-small-font-size;
+@button-background:                             @global-primary-background;
+@button-color:                                  @global-contrast-color;
+@button-hover-background:                       darken(@button-background, 20%);
+@button-hover-color:                            @button-color;
+@button-active-background:                      @button-hover-background;
+@button-active-color:                           @button-hover-color;
+
+@button-primary-background:                     rgba(0,0,0,0);
+@button-primary-color:                          @global-muted-color;
+@button-primary-hover-background:               @global-dark-background;
+@button-primary-hover-color:                    @global-contrast-color;
+@button-primary-active-background:              transparent;
+@button-primary-active-color:                   @global-dark-background;
+
+@button-success-background:                     @global-success-background;
+@button-success-color:                          @global-contrast-color;
+@button-success-hover-background:               darken(@button-success-background, 10%);
+@button-success-hover-color:                    @global-contrast-color;
+@button-success-active-background:              @button-success-hover-background;
+@button-success-active-color:                   @global-contrast-color;
+
+@button-danger-background:                      @global-danger-background;
+@button-danger-color:                           @global-contrast-color;
+@button-danger-hover-background:                darken(@button-danger-background, 10%);
+@button-danger-hover-color:                     @global-contrast-color;
+@button-danger-active-background:               @button-danger-hover-background;
+@button-danger-active-color:                    @global-contrast-color;
+
+@button-disabled-background:                    transparent;
+@button-disabled-color:                         fade(@button-primary-color, 50%);
+
+@button-link-color:                             @global-dark-color;
+@button-link-hover-color:                       @button-link-color;
+@button-link-hover-text-decoration:             none;
+@button-link-disabled-color:                    @global-muted-color;
+
+
+//
+// New
+//
+
+@button-font-family:                            @global-small-font-family;
+@button-font-weight:                            @global-small-font-weight;
+@button-text-transform:                         @global-text-transform;
+@button-letter-spacing:                         @global-letter-spacing;
+
+@button-border:                                 transparent;
+@button-border-width:                           1px;
+@button-border-radius:                          @global-border-radius;
+@button-hover-border:                           transparent;
+
+@button-disabled-border:                        fade(@button-primary-border,50%);
+
+@button-primary-border:                         #ccc;
+@button-primary-hover-border:                   @button-primary-hover-background;
+
+@button-success-border:                         transparent;
+@button-success-hover-border:                   transparent;
+
+@button-danger-border:                          transparent;
+@button-danger-hover-border:                    transparent;
+
+@button-link-font-weight:                       400;
+@button-link-border-width:                      1px;
+@button-link-border:                            fade(@global-border, 60%);
+@button-link-hover-border:                      @global-dark-background;
+@button-link-margin-vertical:                   15px;
+
+
+// Component
+// ========================================================================
+
+.hook-button() {
+    border: @button-border-width solid @button-border;
+    border-radius: @button-border-radius;
+    text-transform: @button-text-transform;
+    font-family: @button-font-family;
+    font-weight: @button-font-weight;
+    letter-spacing: @button-letter-spacing;
+    -webkit-transition: background-color .3s ease-out,background .3s ease-out,opacity .3s ease-out,border-color .3s ease-out;
+    transition: background-color .3s ease-out,background .3s ease-out,opacity .3s ease-out, border-color .3s ease-out;
+}
+
+
+.hook-button-hover() { border-color: @button-hover-border; }
+
+.hook-button-active() { border-color: @button-hover-border; }
+
+
+// Color modifiers
+// ========================================================================
+
+//
+// Modifier: `uk-button-primary`
+//
+
+.hook-button-primary() { border-color: @button-primary-border; }
+
+.hook-button-primary-hover() { border-color: @button-primary-hover-border; }
+.hook-button-primary-active() { border-color: @button-primary-hover-border; }
+
+//
+// Modifier: `uk-button-success`
+//
+
+.hook-button-success() { border-color: @button-success-border; }
+
+.hook-button-success-hover() { border-color: @button-success-hover-border; }
+.hook-button-success-active() { border-color: @button-success-hover-border; }
+
+//
+// Modifier: `uk-button-danger`
+//
+
+.hook-button-danger() { border-color: @button-danger-border; }
+
+.hook-button-danger-hover() { border-color: @button-danger-hover-border; }
+.hook-button-danger-active() {border-color: @button-danger-hover-border; }
+
+
+// Disabled state
+// ========================================================================
+
+.hook-button-disable() { border-color: @button-disabled-border; }
+
+
+// Modifier: `uk-button-link`
+// ========================================================================
+
+.hook-button-link() {
+
+    position: relative;
+    padding: 0;
+    border-radius: 0;
+    font-weight: @button-link-font-weight;
+
+    &:before {
+        content: "";
+        position: absolute;
+        bottom: 3px;
+        left: 0;
+        width: 100%;
+        height: @button-link-border-width;
+        background: @button-link-border;
+    }
+
+    &:after {
+        content: "";
+        position: absolute;
+        bottom: 3px;
+        left: 0;
+        width: 0;
+        height: @button-link-border-width;
+        background: @button-link-hover-border;
+        -webkit-transition: width 1s cubic-bezier(1,0,0,1), -webkit-transform 0.5s;
+        -moz-transition: width 1s cubic-bezier(1,0,0,1), opacity 0.5s, -moz-transform 0.5s;
+        transition: width 1s cubic-bezier(1, 0,0,1), opacity 0.5s, transform 0.5s;
+    }
+
+    &:hover:after { width: 100%; }
+
+}
+
+
+// Size modifiers
+// ========================================================================
+
+.hook-button-large() { border-radius: (@button-border-radius + 1); }
+
+
+// Miscellaneous
+// ========================================================================
+
+.hook-button-misc() {
+
+
+     /* Modifier: `uk-button-link`
+     ========================================================================== */
+
+    .uk-button-link:disabled:after { content: none; }
+
+    .uk-button + .uk-button-link { margin-left: @button-link-margin-vertical; }
+
+
+    /* Sub-object `uk-button-group`
+     ========================================================================== */
+
+    /*
+     * Collapse border
+     */
+
+    .uk-button-group > .uk-button:not(.uk-button-success):not(.uk-button-danger):nth-child(n+2),
+    .uk-button-group > div:nth-child(n+2) .uk-button:not(.uk-button-success):not(.uk-button-danger) { border-left-width: 0; }
+
+    .uk-button-group > .uk-button:not(:disabled):not(.uk-button-success):not(.uk-button-danger):nth-child(n+2):hover,
+    .uk-button-group > div:nth-child(n+2) .uk-button:not(:disabled):not(.uk-button-success):not(.uk-button-danger):hover,
+    .uk-button-group > .uk-button:not(:disabled):not(.uk-button-success):not(.uk-button-danger):nth-child(n+2):active,
+    .uk-button-group > div:nth-child(n+2) .uk-button:not(:disabled):not(.uk-button-success):not(.uk-button-danger):active {
+        margin-left: -@button-border-width;
+        border-left: @button-border-width solid @button-hover-border;
+    }
+
+    /*
+     * Reset border-radius
+     */
+
+    .uk-button-group > .uk-button:not(:first-child):not(:last-child),
+    .uk-button-group > div:not(:first-child):not(:last-child) .uk-button { border-radius: 0; }
+
+    .uk-button-group > .uk-button:first-child,
+    .uk-button-group > div:first-child .uk-button {
+        border-top-right-radius: 0;
+        border-bottom-right-radius: 0;
+    }
+
+    .uk-button-group > .uk-button + .uk-button,
+    .uk-button-group > .uk-button:nth-child(n+2),
+    .uk-button-group > div:last-child .uk-button {
+        border-top-left-radius: 0;
+        border-bottom-left-radius: 0;
+    }
+
+}

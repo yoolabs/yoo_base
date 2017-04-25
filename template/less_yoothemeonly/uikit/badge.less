@@ -1,0 +1,89 @@
+// Copyright (C) YOOtheme GmbH, YOOtheme Proprietary Use License (http://www.yootheme.com/license) */
+
+//
+// Component: Badge
+//
+// ========================================================================
+
+
+// Variables
+// ========================================================================
+
+@badge-background:                              @global-background;
+@badge-padding-horizontal:                      20px;
+
+@badge-font-size:                               16px;
+@badge-font-weight:                             normal;
+@badge-line-height:                             18px;
+@badge-font-weight:                             400;
+
+@badge-color:                                   @global-dark-color;
+@badge-hover-color:                             @global-contrast-color;
+
+@badge-notification-font-size:                  14px;
+@badge-notification-line-height:                16px;
+
+@badge-padding-notification-horizontal:         8px;
+@badge-padding-notification-vertical:           3px;
+
+@badge-success-background:                      @global-background;
+@badge-warning-background:                      @global-background;
+@badge-danger-background:                       @global-background;
+
+//
+// New
+//
+
+@badge-padding-vertical:                        10px;
+@badge-border-width:                            1px;
+@badge-border:                                  @global-border;
+@badge-font-family:                             @global-heading-font-family;
+
+@badge-success-color:                           @global-success-background;
+@badge-warning-color:                           @global-warning-background;
+@badge-danger-color:                            @global-danger-background;
+
+
+// Component
+// ========================================================================
+
+.hook-badge() {
+    padding: @badge-padding-vertical @badge-padding-horizontal;
+    border: @badge-border-width solid @badge-border;
+    font-family: @badge-font-family;
+}
+
+
+// Color modifier
+// ========================================================================
+
+//
+// Modifier: `badge-success`
+//
+
+.hook-badge-success() { color: @badge-success-color; }
+
+//
+// Modifier: `badge-warning`
+//
+
+.hook-badge-warning() { color: @badge-warning-color; }
+
+//
+// Modifier: `badge-danger`
+//
+
+.hook-badge-danger() { color: @badge-danger-color; }
+
+
+// Miscellaneous
+// ========================================================================
+
+.hook-badge-misc() {
+
+    /* Modifier: `uk-badge-notification`;
+     ========================================================================== */
+
+    .uk-badge-notification { padding: @badge-padding-notification-vertical @badge-padding-notification-horizontal; }
+
+}
