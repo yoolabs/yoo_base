@@ -1,0 +1,28 @@
+{
+	"name": "yoo_base",
+	"version": "1.0.0",
+	"copyright": "YOOlabs GmbH, Jannik Mewes",
+
+	"author": "Jannik Mewes",
+	"author_email": "jannik.mewes@yoolabs.com",
+	"author_url": "http://yoolabs.com",
+	"license": "http://www.gnu.org/copyleft/gpl.html GNU/GPL",
+
+	"id": "yoo_base",
+	"name": "yoo_base",
+	"camel": "yooBase",
+	"title": "YOO Base Template v1",
+	"descr": "YOO Base Template v1",
+
+	"minify": "",
+
+
+	"devDependencies": {
+		"grunt": "~0.4.1",
+		"grunt-contrib-copy": "~1.0.0",
+		"grunt-contrib-concat": "~1.0.1",
+		"grunt-contrib-compress": "~1.4.1",
+        "grunt-contrib-watch" : "~1.0.0",
+        "grunt-contrib-clean" : "~1.1.0"
+	}
+}
