@@ -18,7 +18,7 @@ JFactory::GetConfig()->set('widgetkit',1);
 $doc->addStylesheet('templates/' . $this->template . '/css/widgetkit.css');
 $doc->addStylesheet('templates/' . $this->template . '/css/template.css');
 $doc->addScript('templates/' . $this->template . '/warp/vendor/uikit/js/uikit.js');
-$doc->addScript('templates/' . $this->template . '/js/ylib.js');
+$doc->addScript('templates/' . $this->template . '/js/ylib.default.min.js');
 $doc->addScript('templates/' . $this->template . '/js/yootemplate.js');
 $doc->addScript('templates/' . $this->template . '/js/template.js');
 
