@@ -1,3 +1,16 @@
+/*! 
+  * @package    ylib
+ * @version    1.0.0
+ * @date       2017-04-26
+ * @author     Jannik Mewes
+ * @copyright  Copyright (c) 2017 YOOlabs GmbH, Jannik Mewes
+ */
+
+
+(function(){
+var YLib = {};
+window.YLib = YLib;
+
 /*!
  * Most of YLib.Util code is based on leaflet.js
  */
@@ -803,3 +816,6 @@ YLib.Mixin.Hooks = {
 };
 YLib.Mixin.Hooks.addHook = YLib.Mixin.Hooks.addHookSubscriber;
 YLib.Mixin.Hooks.removeHook = YLib.Mixin.Hooks.removeHookSubscriber;
+
+
+})();
