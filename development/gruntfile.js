@@ -52,7 +52,7 @@ module.exports = function(grunt) {
 						cwd: '<%= meta.srcPath %>template/',
 						dest: '<%= meta.deployPath %>source/<%= pkg.name %>/',
 						src: [
-							'**/*.{js,json,css,less,svg,png,jpg,php,html,xml}'
+							'**/*'
 						],
 						// rename: function(dest, src) {
 						// 	return dest + src.replace('%id%',pkg.id).replace('%name%',pkg.name);
@@ -67,7 +67,7 @@ module.exports = function(grunt) {
 							return content;
 						}
 					},
-					noProcess: ['**/*.{png,gif,jpg,ico,psd}'] // processing would corrupt image files.
+					noProcess: ['**/*.{png,gif,jpg,ico,psd,eot,ttf,woff,woff2,otf}'] // processing would corrupt image files.
 				}
 			},
 			// @TODO not working right now
