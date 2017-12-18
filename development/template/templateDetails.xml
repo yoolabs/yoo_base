@@ -9,16 +9,25 @@
 	<copyright>Copyright (C) 2017 YOOlabs GmbH</copyright>
 	<description>YOOlabs - Base 2 beta </description>
 	<files>
-		<filename>component.php</filename>
-		<filename>error.php</filename>
+		<!-- <filename>component.php</filename> -->
+		<!-- <filename>error.php</filename> -->
 		<filename>favicon.ico</filename>
 		<filename>index.php</filename>
+		<filename>warp.php</filename>
 		<filename>templateDetails.xml</filename>
-		<filename>template_preview.png</filename>
-		<filename>template_thumbnail.png</filename>
+		<!-- <filename>template_preview.png</filename> -->
+		<!-- <filename>template_thumbnail.png</filename> -->
+		<folder>classes</folder>
 		<folder>css</folder>
+		<folder>fonts</folder>
+		<folder>html</folder>
 		<folder>images</folder>
 		<folder>js</folder>
+		<folder>layouts</folder>
+		<folder>less</folder>
+		<folder>less_yootheme</folder>
+		<folder>renderer</folder>
+		<folder>warp</folder>
 	</files>
 	<positions>
 		<position>logo</position>
