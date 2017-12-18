@@ -3,6 +3,7 @@
 
 defined('_JEXEC') or die;
 
+require_once __DIR__.'/renderer/yoomodulesgrid.php';
 require_once __DIR__.'/classes/core.php';
 YooTemplateCore::Init(__DIR__);
 YooTemplateCore::$renderer = $this;

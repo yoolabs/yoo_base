@@ -9,6 +9,18 @@
 
 defined('JPATH_PLATFORM') or die;
 
+/*
+	USAGE:
+	<jdoc:include type="yoomodulesgrid" name="[position]" style="xhtml" />
+
+	Parameters:
+	small => defined => sets uk-grid-small-small
+	match => 1 | 0 | class => adds data-uk-grid-match
+	cols, cols-small, cols-medium, cols-large, cols-xlarge => set width
+
+
+*/
+
 /**
  * JDocument Modules renderer
  *
@@ -78,11 +90,11 @@ class JDocumentRendererYooModulesGrid extends JDocumentRenderer
 		$gridclasses = 'uk-grid uk-grid-small-small';
 		if($params['small']) $gridclasses.= ' uk-grid-small';
 
-		if($params['matchheight']=='0'||!$params['matchheight']) $matchheight = '' ;
-		elseif ($params['matchheight']=='panel') $matchheight = 'data-uk-grid-match="{target:\'.uk-panel\'}"';
-		else $matchheight =  'data-uk-grid-match';
+		if($params['match']=='0'||!$params['match']) $match = '' ;
+		elseif($params['match']=='1') $match =  'data-uk-grid-match';
+		else $match = 'data-uk-grid-match="{target:\'' . $params['match'] . '\'}"';
 
-		$buffer = "<div class=\"$gridclasses\" $matchheight data-uk-grid-margin >\n$buffer\n</div>";
+		$buffer = "<div class=\"$gridclasses\" match data-uk-grid-margin >\n$buffer\n</div>";
 
 		return $buffer;
 	}

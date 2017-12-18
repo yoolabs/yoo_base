@@ -1,81 +1,164 @@
 <?php
-<%= banner %>
-
-/**
- * JDocument Modules renderer
- *
- * @since  11.1
+/*!
+  * @package    yoo_base
+ * @version    1.0.0
+ * @date       2017-04-26
+ * @author     Jannik Mewes
+ * @copyright  Copyright (c) 2017 YOOlabs GmbH, Jannik Mewes
  */
-class JDocumentRendererYooModulesGrid extends JDocumentRenderer
+
+
+require_once __DIR__.'/helper.menu.php';
+
+class YooTemplateCore
 {
-	/**
-	 * Renders multiple modules script and returns the results as a string
-	 *
-	 * @param   string  $position  The position of the modules to render
-	 * @param   array   $params    Associative array of values
-	 * @param   string  $content   Module content
-	 *
-	 * @return  string  The output of the script
-	 *
-	 * @since   11.1
-	 */
-	public function render($position, $params = array(), $content = null)
+
+	static $initialized = false;
+	static $renderer = false;
+	static $basePath;
+	static $layoutPath;
+	static $isAsync;
+	static $list;
+	static $base;
+	static $active;
+	static $home;
+	static $isHome;
+	static $jsData;
+	static $hasActiveItem = false;
+	static $activeItemContent;
+	static $homeContent;
+
+	static function init($basePath)
 	{
-		$renderer = $this->_doc->loadRenderer('module');
-		$buffer = '';
 
-		$app = JFactory::getApplication();
-		$user = JFactory::getUser();
-		$frontediting = ($app->isSite() && $app->get('frontediting', 1) && !$user->guest);
+		if(self::$initialized) return;
+		self::$initialized = true;
+		self::$basePath = $basePath.'/';
+		self::$layoutPath = $basePath.'/layouts/';
+		self::$isAsync = JRequest::GetVar('async',0);
 
-		$menusEditing = ($app->get('frontediting', 1) == 2) && $user->authorise('core.edit', 'com_menus');
+		$params = new JRegistry();
+		$params->set('startLevel',0);
+		$params->set('endLevel',0);
+		$params->set('showAllChildren',1);
+		$params->set('menutype','mainmenu');
+		$params->set('base',0);
 
-		$modules = JModuleHelper::getModules($position);
-		$modulecount = count($modules);
+		self::$jsData   = new StdClass();
 
-		$cols=array();
-		$cols['width'] = 		($params['cols']) 			? (int)$params['cols'] 			: 1;
-		$cols['width-small'] = 	($params['cols-small']) 	? (int)$params['cols-small'] 	: 2;
-		$cols['width-medium'] = ($params['cols-medium']) 	? (int)$params['cols-medium'] 	: false;
-		$cols['width-large'] = 	($params['cols-large']) 	? (int)$params['cols-large'] 	: 4;
-		$cols['width-xlarge'] = ($params['cols-xlarge']) 	? (int)$params['cols-xlarge'] 	: false;
+		self::$list      = YooTemplateHelperMenu::getList($params);
+		self::$base      = YooTemplateHelperMenu::getBase($params);
+		self::$active    = YooTemplateHelperMenu::getActive($params);
+		self::$home      = YooTemplateHelperMenu::getHome($params);
 
-		if($modulecount==3) $cols['width-large'] = 3;
+		self::$isHome    = ( self::$active->id == self::$home->id );
 
+		// self::prepareJsData();
 
-		foreach($cols as &$col) {
-			if($col>$modulecount) $col = $modulecount;
-		}
+		// $active_id = self::$active->id;
+		// $path      = self::$base->tree;
 
-		$colclasses = '';
-
-		foreach($cols as $id=>$count) {
-			if($count!=false) $colclasses.= ' uk-'.$id.'-1-'.$count;
-		}
-
-		foreach ($modules as $i=>$mod)
-		{
-			$mod->index = $i;
-			$moduleHtml = $renderer->render($mod, $params, $content);
-
-			if ($frontediting && trim($moduleHtml) != '' && $user->authorise('module.edit.frontend', 'com_modules.module.' . $mod->id))
-			{
-				$displayData = array('moduleHtml' => &$moduleHtml, 'module' => $mod, 'position' => $position, 'menusediting' => $menusEditing);
-				JLayoutHelper::render('joomla.edit.frontediting_modules', $displayData);
-			}
-
-			$buffer .= "<div class=\"$colclasses\" >\n$moduleHtml\n</div>";
-		}
-
-		$gridclasses = 'uk-grid uk-grid-small-small';
-		if($params['small']) $gridclasses.= ' uk-grid-small';
-
-		if($params['matchheight']=='0'||!$params['matchheight']) $matchheight = '' ;
-		elseif ($params['matchheight']=='panel') $matchheight = 'data-uk-grid-match="{target:\'.uk-panel\'}"';
-		else $matchheight =  'data-uk-grid-match';
-
-		$buffer = "<div class=\"$gridclasses\" $matchheight data-uk-grid-margin >\n$buffer\n</div>";
-
-		return $buffer;
 	}
+
+	static function setData($menudata)
+	{
+
+
+	}
+
+	static function setItemContent($content)
+	{
+		self::$activeItemContent = $content;
+	}
+
+	static function SetHomeContent($content)
+	{
+		self::$homeContent = $content;
+	}
+
+	static function prepareJsData()
+	{
+		self::$jsData->activeId = self::$active->id;
+		self::$jsData->items = array();
+		self::$jsData->siteName = JFactory::getConfig()->get('sitename','');;
+		foreach(self::$list as $i=>$item) {
+			$jsitem = new StdClass();
+			$jsitem->id = $item->id;
+			$jsitem->alias = $item->alias;
+			$jsitem->isActive = ($item->id==self::$active->id);
+			$jsitem->route = $item->route;
+			// $jsitem->theme = $item->params->get('itemcolor','grey');
+			// $jsitem->bgImage = $item->params->get('bgimage','');
+			// $jsitem->title = $item->params->get('uz_headline',$item->title);
+			self::$jsData->items[] = $jsitem;
+		}
+
+		if(self::$active->id && !self::$isHome) {
+			// render grid in detailview mode
+			$activeItem = false;
+			foreach(self::$jsData->items as $i=>$item) {
+				if($item->isActive) $activeItem = $item;
+			}
+			if($activeItem) {
+				self::$hasActiveItem = true;
+			}
+		}
+	}
+
+	static function toJson()
+	{
+		return json_encode(self::$jsData,JSON_PRETTY_PRINT);
+	}
+
+	static function Render()
+	{
+		ob_start();
+		include self::$layoutPath.'index.php';
+		$html = ob_get_clean();
+
+		if(!self::$isAsync) {
+			return $html;
+		} else {
+			$data = new StdClass();
+			$data->html = $html;
+			return json_encode($data,JSON_PRETTY_PRINT);
+		}
+	}
+
+	static function RenderPageInner()
+	{
+		ob_start();
+		$id = 'default';
+		include self::$layoutPath.'page/'.$id.'.php';
+		$html = ob_get_clean();
+		return '<div yoo-template-page class="yoo-template-page-'.$id.'">'.$html.'</div>';
+	}
+
+	static function RenderPartial($id)
+	{
+		ob_start();
+		include self::$layoutPath.'partial/'.$id.'.php';
+		$html = ob_get_clean();
+		return $html;
+	}
+
+	// static function Render()
+	// {
+	// 	echo self::RenderHomeItem(self::$homeContent);
+	//
+	//
+	// 	<div id="wrapper-grid">
+	// 		<div id="grid" >
+	// 			<div class="grid-dock">
+	// 				 echo self::RenderHtmlGrid();
+	// 			</div>
+	// 		</div>
+	// 	</div>
+	//
+	//
+	// }
+
+
+
+
 }
