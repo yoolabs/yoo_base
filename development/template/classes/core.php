@@ -1,6 +1,7 @@
 <?php
 <%= banner %>
 
+
 require_once __DIR__.'/helper.menu.php';
 
 class YooTemplateCore
@@ -19,6 +20,7 @@ class YooTemplateCore
 	static $hasActiveItem = false;
 	static $activeItemContent;
 	static $homeContent;
+	static $menuItemParams;
 
 	static function init($basePath)
 	{
@@ -42,6 +44,8 @@ class YooTemplateCore
 		self::$base      = YooTemplateHelperMenu::getBase($params);
 		self::$active    = YooTemplateHelperMenu::getActive($params);
 		self::$home      = YooTemplateHelperMenu::getHome($params);
+
+		self::$menuItemParams = self::$active->params;
 
 		// self::prepareJsData();
 
@@ -108,13 +112,23 @@ class YooTemplateCore
 		return $html;
 	}
 
+	static function GetBodyClasses()
+	{
+		return "site layout_".self::GetPageLayout();
+	}
+
+	static function GetPageLayout()
+	{
+		return self::$menuItemParams->get('wi_page_layout','default');
+	}
+
 	static function RenderPageInner()
 	{
 		ob_start();
-		$id = 'default';
+		$id = self::GetPageLayout();
 		include self::$layoutPath.'page/'.$id.'.php';
 		$html = ob_get_clean();
-		return '<div yoo-template-page class="yoo-template-page-'.$id.'">'.$html.'</div>';
+		return '<div yoo-template-page class="page-layout yoo-template-page-'.$id.'">'.$html.'</div>';
 	}
 
 	static function RenderPartial($id)

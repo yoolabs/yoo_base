@@ -43,6 +43,9 @@
 	<config>
 		<fields name="params">
 			<fieldset name="advanced">
+				<field name="pageLayout" type="list" default="default" label="Page Layout" description="" filter="word">
+					<option value="default">Default Template</option>
+				</field>
 				<field name="templateMode" type="list" default="default" label="Template Mode" description="" filter="word">
 					<option value="default">Full Template</option>
 					<option value="minimal">Minimal Template</option>
