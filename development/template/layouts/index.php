@@ -18,8 +18,9 @@ JFactory::GetConfig()->set('widgetkit',1);
 $doc->addStylesheet('templates/' . $renderer->template . '/css/widgetkit.css');
 $doc->addStylesheet('templates/' . $renderer->template . '/css/template.css');
 $doc->addScript('templates/' . $renderer->template . '/warp/vendor/uikit/js/uikit.js');
-$doc->addScript('templates/' . $renderer->template . '/js/ylib.default.min.js');
-$doc->addScript('templates/' . $renderer->template . '/js/yootemplate.js');
+// $doc->addScript('templates/' . $renderer->template . '/js/ylib.default.min.js');
+// $doc->addScript('templates/' . $renderer->template . '/js/yootemplate.js');
+// $doc->addScript('templates/' . $renderer->template . '/js/wi.offcanvas.js');
 $doc->addScript('templates/' . $renderer->template . '/js/template.js');
 
 
@@ -35,16 +36,15 @@ $doc->addScript('templates/' . $renderer->template . '/js/template.js');
 	<meta name="apple-mobile-web-app-capable" content="YES" />
 
 	<link href="http://fonts.googleapis.com/css?family=Open+Sans:400" rel="stylesheet" type="text/css">
-	<link href="http://fonts.googleapis.com/css?family=Raleway:400" rel="stylesheet" type="text/css">
 
 	<jdoc:include type="head" />
 
 	<script type="text/javascript">
-		(function($) {
-			var yooTemplate = $.yooTemplate({
-				ajax : true,
-			})
-		})(jQuery);
+		// (function($) {
+		// 	var yooTemplate = $.yooTemplate({
+		// 		ajax : true,
+		// 	})
+		// })(jQuery);
 	</script>
 
 </head>
