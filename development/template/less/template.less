@@ -1,8 +1,6 @@
 
-// @import "custom/prefixer.less";
-// @import "uikit3/uikit.less";
-
 @import "custom/prefixer.less";
+// @import "custom/menutoggle.less";
 @import "uikit2/uikit.less";
 @import "custom/uikit2-custom.less";
 
@@ -102,33 +100,38 @@ body 								{ min-height:100%; }
 
 /* ----------------------- FORM STYLES  ------------------------------------------------------------ */
 
+.ui.message						{ max-width:500px; margin:0 auto!important; box-sizing:border-box; }
+.ui.message .header:not(.ui)	{ .font-size-default()!important; }
+
 .uk-form {
 	@error-color : #cc0a35;
+	&							{ width:100%; max-width:500px; margin:0 auto; padding:20px 0; }
+	.ui.button					{ .pw-button(); min-width:240px; }
 
 	label						{ display:none; }
-	.gcore-input textarea,
-	.gcore-input select,
-	.gcore-input button,
-	.gcore-input input			{ width:100%; .box-sizing(border-box); margin-bottom:10px; padding:4px 10px; height:36px; border:0; }
-	.gcore-input textarea		{ height:100px; }
-
-	.gcore-form-row.required-field>label:after{ content:"*"; display:inline-block; color:@error-color; font-size:22px; }
-
-	.gtooltip {
-		&.gvalidation-error-tip {
-			&								{ background:@error-color!important; border-color:@error-color!important; padding: 6px 14px!important; }
-			.gtooltip-arrow-border-top,
-			.gtooltip-arrow-top				{ border-top-color:@error-color!important;  }
-			.gtooltip-arrow-border-bottom,
-			.gtooltip-arrow-bottom			{ border-bottom-color:@error-color!important;  }
-			.gtooltip-arrow-border-left,
-			.gtooltip-arrow-left			{ border-left-color:@error-color!important;  }
-			.gtooltip-arrow-border-right,
-			.gtooltip-arrow-right			{ border-right-color:@error-color!important;  }
-		}
+	.field textarea,
+	.field select,
+	.field button,
+	.field input {
+		&						{ width:100%; .box-sizing(border-box); margin-bottom:20px; padding:8px 15px; height:36px; border:0;
+		 								background:transparent; border:none; border-bottom:1px solid #fff; color:#fff; }
+		&:focus					{ background:transparent; border-bottom:1px solid #fff; color:#fff; }
+		&::-webkit-input-placeholder 	{ color:#fff; .font-size-small; }
+		&::-moz-placeholder 			{ color:#fff; .font-size-small; }
+		&:-ms-input-placeholder 		{ color:#fff; .font-size-small; }
+		&:-moz-placeholder 				{ color:#fff; .font-size-small; }
 	}
+	.field textarea				{ height:100px; background:@color-grey; border:none; padding:15px; height:200px; margin-top:10px; }
+	.field textarea:focus		{ background:@color-grey; }
+
+	.field.error {
+		textarea,select,input	{ border-color:@error-color;  }
+		.ui.prompt				{ margin:-20px 0 15px 0; .font-size-small; color: #ffffff; background-color:@error-color; display: block; }
+	}
+
+	// .field.required-field>label:after{ content:"*"; display:inline-block; color:@error-color; font-size:22px; }
 }
-.chrono_credits					{ display:none!important; }
+.chronoforms6_credits			{ display:none!important; }
 
 
 
