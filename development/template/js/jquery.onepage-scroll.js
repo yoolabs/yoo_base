@@ -33,7 +33,6 @@
 		beforeMove: null,
 		afterMove: null,
 		loop: false,
-		responsiveFallback: false,
 		direction: 'vertical',
 		getSectionAnchor: function($section) {
 			console.log($section.attr('id'));
@@ -225,68 +224,6 @@
 			}
 		}
 
-		function responsive() {
-			//start modification
-			var valForTest = false;
-			var typeOfRF = typeof settings.responsiveFallback
-
-			if (typeOfRF == "number") {
-				valForTest = $(window).width() < settings.responsiveFallback;
-			}
-			if (typeOfRF == "boolean") {
-				valForTest = settings.responsiveFallback;
-			}
-			if (typeOfRF == "function") {
-				valFunction = settings.responsiveFallback();
-				valForTest = valFunction;
-				typeOFv = typeof valForTest;
-				if (typeOFv == "number") {
-					valForTest = $(window).width() < valFunction;
-				}
-			}
-
-			//end modification
-			if (valForTest) {
-				$("body").addClass("disabled-onepage-scroll");
-				$(document).unbind('mousewheel DOMMouseScroll MozMousePixelScroll');
-				el.swipeEvents().unbind("swipeDown swipeUp");
-			} else {
-				if ($("body").hasClass("disabled-onepage-scroll")) {
-					$("body").removeClass("disabled-onepage-scroll");
-					$("html, body, .wrapper").animate({
-						scrollTop: 0
-					}, "fast");
-				}
-
-
-				el.swipeEvents().bind("swipeDown", function(event) {
-					if (!$("body").hasClass("disabled-onepage-scroll")) event.preventDefault();
-					$.moveUp();
-				}).bind("swipeUp", function(event) {
-					if (!$("body").hasClass("disabled-onepage-scroll")) event.preventDefault();
-					$.moveDown();
-				});
-
-				$(document).bind('mousewheel DOMMouseScroll MozMousePixelScroll', function(event) {
-					event.preventDefault();
-
-					var delta, dir;
-					var w = event.wheelDelta,
-						d = event.detail;
-
-					if (event.detail) {
-						if (event.wheelDelta)
-							delta = event.wheelDelta / event.detail / 40 * event.detail > 0 ? 1 : -1;
-						else
-							delta = -event.detail / 3;
-					} else {
-						delta = event.wheelDelta / 120;
-					}
-
-					init_scroll(event, delta);
-				});
-			}
-		}
 
 		// var lastOffset = $( mySelector ).scrollTop();
 		// var lastDate = new Date().getTime();
@@ -328,11 +265,13 @@
 
 		el.addClass("onepage-wrapper").css("position", "relative");
 		$.each(sections, function(i) {
-			$(this).addClass("section").attr("data-index", i + 1);
-			var id = $(this).attr('id') || (i + 1);
+			var $sect = $(this);
+			$sect.addClass("section").attr("data-index", i + 1);
+			var id = $sect.attr('id');
+			if(id=='') { id = (i + 1); $sect.attr('id',id); };
 
 			if (settings.pagination == true) {
-				var sectionTitle = $(this).attr('data-screen-title');
+				var sectionTitle = $sect.attr('data-screen-title');
 				paginationList += "<li><a data-index='" + (i + 1) + "' href='#" + id + "'><span>" + sectionTitle + "</span></a></li>"
 			}
 		});
@@ -420,7 +359,7 @@
 				}
 
 				// dir = (event.detail<0) ? 1 : (event.wheelDelta>0) ? 1 : -1;
-				console.log(e.detail, e.wheelDelta, delta);
+				// console.log(e.detail, e.wheelDelta, delta);
 
 
 				function timeoutHandler() {
@@ -432,7 +371,7 @@
 				// timeout which waits for Mac smooth scrolling to end
 				if (immediateScrollEventTimeout) clearTimeout(immediateScrollEventTimeout);
 				immediateScrollEventTimeout = setTimeout(function() {
-					console.log('immediateScrollEventTimeout');
+					// console.log('immediateScrollEventTimeout');
 					timeoutHandler();
 				}, 500);
 
@@ -440,7 +379,7 @@
 					if (globalScrollEventTimeout) clearTimeout(globalScrollEventTimeout);
 					// global timeout which makes sure one can always scroll again after some time
 					globalScrollEventTimeout = setTimeout(function() {
-						console.log('globalScrollEventTimeout');
+						// console.log('globalScrollEventTimeout');
 						timeoutHandler();
 					}, 1200);
 					// if(Math.abs(e.wheelDelta) > 15)
@@ -450,15 +389,6 @@
 			}
 
 		});
-
-
-		if (settings.responsiveFallback != false) {
-			$(window).resize(function() {
-				responsive();
-			});
-
-			responsive();
-		}
 
 		if (settings.keyboard == true) {
 			$(document).keydown(function(e) {
