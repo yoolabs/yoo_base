@@ -6,21 +6,21 @@
 @color-link:						#289ce6;
 @color-link-hover:					#44a6e6;
 
-.font-default 						{ font-family: 'Open Sans', Helvetica, sans-serif; color:inherit; letter-spacing:0; font-weight:300; }
-.font-heading 						{ font-family: 'Open Sans', Helvetica, sans-serif; text-transform:uppercase;
+.font-default 						{ font-family: 'Open Sans', Helvetica, sans-serif; color:inherit; letter-spacing:0; font-weight:300; line-height:1.6; }
+.font-heading 						{ font-family: 'Open Sans', Helvetica, sans-serif; text-transform:uppercase; line-height:1.6;
 										text-transform:uppercase; color:inherit; font-style:normal; font-weight:400; letter-spacing:2px; font-weight:300; }
-.font-subheading 					{ font-family: 'Open Sans', Helvetica, sans-serif;
+.font-subheading 					{ font-family: 'Open Sans', Helvetica, sans-serif; line-height:1.6;
 										text-transform:uppercase; color:inherit; font-style:normal; font-weight:400; letter-spacing:2px; }
 
 
-.font-size-default 					{ font-size:.95rem; line-height:1.5rem; }
-.font-size-small 					{ font-size:0.85rem; line-height:1.4rem; }
+.font-size-default 					{ font-size:.95rem;  }
+.font-size-small 					{ font-size:0.85rem; }
 
-.font-size-heading-xl 				{ font-size:2.5rem; line-height:3.0rem; }
-.font-size-heading-l 				{ font-size:1.6rem; line-height:2.6rem; }
-.font-size-heading-m 				{ font-size:1.25rem; line-height:2.0rem; }
-.font-size-heading-s 				{ font-size:1.0rem; line-height:1.6rem; }
-.font-size-subheading 				{ font-size:1.25rem; line-height:2.0rem; }
+.font-size-heading-xl 				{ font-size:2.5rem; }
+.font-size-heading-l 				{ font-size:1.6rem; }
+.font-size-heading-m 				{ font-size:1.25rem; }
+.font-size-heading-s 				{ font-size:1.0rem; }
+.font-size-subheading 				{ font-size:1.25rem; }
 
 
 .fixedtext {
@@ -41,22 +41,22 @@
 
 body {
 	&								{ .font-default; }
-	&								{ font-size:15px; line-height:22px; }
+	&								{ font-size:15px; }
 	&								{ font-size: ~"calc(10px + .2vw)";  }
 	@media (min-width:960px) {
-		&							{ font-size:15px; line-height:22px; }
+		&							{ font-size:15px; }
 		&							{ font-size: ~"calc(10px + .2vw)"; }
 	}
 	@media (min-width:1600px) {
-		&							{ font-size:18px; line-height:25px; }
+		&							{ font-size:18px; }
 	}
 }
 h1									{ .font-heading; .font-size-heading-xl; }
 h2									{ .font-heading; .font-size-heading-m; }
 h3									{ .font-heading; .font-size-heading-s; }
 h4									{ .font-subheading; .font-size-subheading; }
-h5									{ .font-subheading; font-size:1.0rem; line-height:1.6rem; }
-h6									{ .font-subheading; font-size:1.0rem; line-height:1.6rem; }
+h5									{ .font-subheading; font-size:1.0rem; }
+h6									{ .font-subheading; font-size:1.0rem; }
 a									{ color:@color-link; }
 a:hover								{ color:@color-link-hover; text-decoration:none; }
 b,strong							{  }
