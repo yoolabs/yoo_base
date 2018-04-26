@@ -122,6 +122,11 @@ class YooTemplateCore
 		return self::$menuItemParams->get('wi_page_layout','default');
 	}
 
+	static function GetMenuItemParam($id,$default)
+	{
+		return self::$menuItemParams->get($id,$default);
+	}
+
 	static function RenderPageInner()
 	{
 		ob_start();
