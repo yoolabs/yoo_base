@@ -108,7 +108,7 @@
 			lastAnimation = 0,
 			paginationList = "";
 
-		transformPage = function(settings, pos, index) {
+		transformPage = function(settings, pos, index, immediately) {
 			if (typeof settings.beforeMove == 'function') settings.beforeMove(index);
 
 			// $(this).css({
@@ -124,7 +124,7 @@
 			// console.log(el,pos,el.prop('scrollTop'));
 			el.stop().animate({
 				scrollTop: -1 * pos
-			}, settings.animationTime, function() {
+			}, immediately?0:settings.animationTime, function() {
 				if (typeof settings.afterMove == 'function') settings.afterMove(index);
 			});
 		}
@@ -148,9 +148,10 @@
 
 		$.moveDown = function() {
 			// var el = $(this)
-			index = $(settings.sectionContainer + ".active").data("index");
-			current = $(settings.sectionContainer + "[data-index='" + index + "']");
-			next = $(settings.sectionContainer + "[data-index='" + (index + 1) + "']");
+			var index = $(settings.sectionContainer + ".active").data("index");
+			var current = $(settings.sectionContainer + "[data-index='" + index + "']");
+			var next = $(settings.sectionContainer + "[data-index='" + (index + 1) + "']");
+			var pos;
 			if (next.length < 1) {
 				if (settings.loop == true) {
 					pos = 0;
@@ -178,9 +179,10 @@
 
 		$.moveUp = function() {
 			// var el = $(this)
-			index = $(settings.sectionContainer + ".active").data("index");
-			current = $(settings.sectionContainer + "[data-index='" + index + "']");
-			next = $(settings.sectionContainer + "[data-index='" + (index - 1) + "']");
+			var index = $(settings.sectionContainer + ".active").data("index");
+			var current = $(settings.sectionContainer + "[data-index='" + index + "']");
+			var next = $(settings.sectionContainer + "[data-index='" + (index - 1) + "']");
+			var pos;
 
 			if (next.length < 1) {
 				if (settings.loop == true) {
@@ -222,6 +224,12 @@
 				updateAnchor(next);
 				transformPage(settings, pos, page_index);
 			}
+		}
+
+		function fixPosition() {
+			var current = $(settings.sectionContainer + ".active");
+			var pos = calcPosition(current);
+			transformPage(settings, pos, current.data("index"), true);
 		}
 
 
@@ -389,6 +397,33 @@
 			}
 
 		});
+
+
+		(function responsive() {
+			// fix wrong heights at mobile browser (due to browser menu bar changing its height)
+			// inspired by MickL https://github.com/alvarotrigo/fullPage.js/issues/2414#issuecomment-261716140
+
+			var resize = function() {
+				// console.log('check height');
+				if (window.innerHeight != height) {
+					// console.log('set section height to '+window.innerHeight);
+					height = window.innerHeight;
+					$(settings.sectionContainer).css('height', height + 'px');
+					fixPosition();
+				}
+			};
+			var height = window.innerHeight;
+			var a = setInterval(function() {
+				// $(window).scrollTop(-1);
+				resize();
+			}, 500); // Don't lower more than 500ms, otherwise there will be animation-problems with the  Safari toolbar
+
+			$(window).on('resize', function() {
+				resize();
+			});
+
+		})();
+
 
 		if (settings.keyboard == true) {
 			$(document).keydown(function(e) {
