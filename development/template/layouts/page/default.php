@@ -1,12 +1,39 @@
 <?php
-<%= banner %>
 
 	#$bgimage = YooGrid::$home->params->get('bgimage',false);
+	$showSidebar = YooTemplateCore::$renderer->countModules('sidemenu');
 
 ?>
+    <?php if (YooTemplateCore::$renderer->countModules('top')) : ?>
+    <div class="section-top">
+        <jdoc:include type="modules" name="top" style="none" />
+    </div>
+    <?php endif; ?>
 
-<section id="page">
-	<jdoc:include type="component" />
+<section id="page" class="<?php if($showSidebar) echo 'has-sidebar'; ?>">
+    <?php if (YooTemplateCore::$renderer->countModules('content-top')) : ?>
+    <div class="section-content-top">
+        <jdoc:include type="modules" name="content-top" style="none" />
+    </div>
+    <?php endif; ?>
+	<?php if($showSidebar): ?>
+		<div class="sidebar">
+			<jdoc:include type="modules" name="sidemenu" style="none" />
+		</div>
+	<?php endif; ?>
+	<div id="main" class="main">
+		<jdoc:include type="component" />
+	</div>
+    <?php if (YooTemplateCore::$renderer->countModules('content-bottom')) : ?>
+    <div class="section-content-bottom">
+        <jdoc:include type="modules" name="content-bottom" style="none" />
+    </div>
+    <?php endif; ?>
 </section>
+<?php if (YooTemplateCore::$renderer->countModules('bottom')) : ?>
+<div class="section-bottom">
+	<jdoc:include type="modules" name="bottom" style="none" />
+</div>
+<?php endif; ?>
 
 <jdoc:include type="modules" name="debug" style="none" />

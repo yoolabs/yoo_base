@@ -33,8 +33,11 @@
 		<position>logo</position>
 		<position>topmenu</position>
 		<position>nav</position>
+		<position>onepage</position>
+		<position>top</position>
 		<position>content-top</position>
 		<position>content-bottom</position>
+		<position>bottom</position>
 		<position>offcanvas</position>
 		<position>footer</position>
 		<position>debug</position>
