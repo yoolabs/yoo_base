@@ -1,10 +1,8 @@
 <?php
 <%= banner %>
 
-
 	// $bgimage = YooTemplateCore::$home->params->get('bgimage',false);
-
-	JFactory::getDocument()->addScript('templates/' . YooTemplateCore::$renderer->template . '/js/jquery.onepage-scroll.js');
+	JFactory::getDocument()->addScript('templates/' . YooTemplateCore::$renderer->template . '/js/wi.snapscroll.js');
 
 ?>
 <div class="onepage-wrapper">
