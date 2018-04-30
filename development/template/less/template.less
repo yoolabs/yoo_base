@@ -52,17 +52,18 @@ body 								{ min-height:100%; }
 .ui.message						{ max-width:500px; margin:0 auto!important; box-sizing:border-box; }
 .ui.message .header:not(.ui)	{ .font-size-default()!important; }
 
-.uk-form {
+.ui.form.uk-form {
 	@error-color : #cc0a35;
 	&							{ width:100%; max-width:500px; margin:0 auto; padding:20px 0; }
 	.ui.button					{ .uk-button(); min-width:240px; }
 
-	label						{ display:none; }
+	label						{ display:none!important; }
+	.field						{ margin-bottom:10px; }
 	.field textarea,
 	.field select,
 	.field button,
 	.field input {
-		&						{ width:100%; .box-sizing(border-box); margin-bottom:20px; padding:8px 15px; height:36px; border:0;
+		&						{ width:100%; .box-sizing(border-box); margin-bottom:0; padding:8px 15px; height:36px; border:0;
 		 								background:transparent; border:none; border-bottom:1px solid #fff; color:#fff; }
 		&:focus					{ background:transparent; border-bottom:1px solid #fff; color:#fff; }
 		&::-webkit-input-placeholder 	{ color:#fff; .font-size-small; }
