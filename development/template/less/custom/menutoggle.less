@@ -1,22 +1,11 @@
-#menutoggle {
+.menutoggle1 {
 	&								{ width:30px; height:34px; margin:0; display:block; z-index:1010; }
 	span 							{ margin: 0 auto; position: relative; top: 12px; }
 	span:before, span:after 		{ position: absolute; content: ''; }
 	span, span:before, span:after 	{ width: 100%; height: 3px; display: block; border-radius:2px;
-										.transition(~"margin 0.2s 0s, transform 0.2s 0.2s, background-color 0.2s 0s"); }
-	span, span:before, span:after	{ background-color:#fff; /*.box-shadow(0 0 15px 2px rgba(255, 255, 255, 0.59));*/ }
+										.transition(~"margin 0.2s 0s, transform 0.2s 0.2s, color 0.5s 0s, background-color 0.3s 0s"); }
+	span, span:before, span:after	{ background-color:currentColor; /*.box-shadow(0 0 10px 2px rgba(255, 255, 255, 0.3));*/ }
 
-	body.viewing-page-5 &,
-	body.layout_default & {
-		span, span:before, span:after{ background-color:@color-link; }
-	}
-	body.uk-offcanvas-page & {
-		span, span:before, span:after{ background-color:#fff; }
-	}
-
-	&:hover span,
-	&:hover span:before,
-	&:hover span:after 				{ background-color: @color-link-hover!important; }
 	span:before 					{ margin-top: -10px; }
 	span:after 						{ margin-top: 10px; }
 	&.uk-active span 				{ background-color: rgba(0,0,0,0.0)!important; .transition-delay(0.2s); }
