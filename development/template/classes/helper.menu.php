@@ -3,7 +3,7 @@
 
 // nothing but a renamed copy of mod_menu helper class
 
-class YooTemplateHelperMenu
+class YTemplateHelperMenu
 {
 	/**
 	 * Get a list of the menu items.

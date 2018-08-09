@@ -1,19 +1,19 @@
 <?php
 <%= banner %>
 
-	// $bgimage = YooTemplateCore::$home->params->get('bgimage',false);
-	JFactory::getDocument()->addScript('templates/' . YooTemplateCore::$renderer->template . '/js/wi.snapscroll.js');
+	// $bgimage = YTemplate::$home->params->get('bgimage',false);
+	JFactory::getDocument()->addScript('templates/' . YTemplate::$renderer->template . '/js/wi.snapscroll.js');
 
 ?>
 <div class="onepage-wrapper">
-    <?php if (YooTemplateCore::$renderer->countModules('onepage')) : ?>
+    <?php if (YTemplate::$renderer->countModules('onepage')) : ?>
     <!-- <div id="tm-fullscreen-b2" class="tm-fullscreen tm-fullscreen-b2"> -->
         <jdoc:include type="modules" name="onepage" style="none" />
     <!-- </div> -->
     <?php endif; ?>
 </div>
 
-    <?php if (YooTemplateCore::$renderer->countModules('dotnav')) : ?>
+    <?php if (YTemplate::$renderer->countModules('dotnav')) : ?>
 
 
     <?php endif; ?>
@@ -21,7 +21,7 @@
     <div id="dotnav-dock">
 	    <div id="dotnav-inner"></div>
 	    <div id="dotnav-bottom">
-		    <?php if (YooTemplateCore::$renderer->countModules('dotnav-bottom')) : ?>
+		    <?php if (YTemplate::$renderer->countModules('dotnav-bottom')) : ?>
 		    <jdoc:include type="modules" name="dotnav-bottom" style="none" />
 		    <?php endif; ?>
 		</div>

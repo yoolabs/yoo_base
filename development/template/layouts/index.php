@@ -5,8 +5,9 @@
 $app             = JFactory::getApplication();
 $doc             = JFactory::getDocument();
 $user            = JFactory::getUser();
-$renderer        = YooTemplateCore::$renderer;
+$renderer        = YTemplate::$renderer;
 $templateMode    = $renderer->params->get('templateMode');
+$pageClass       = YTemplate::$menuItemParams->get('pageclass_sfx','');
 $renderer->setMetaData('generator','');
 
 JHtml::_('jquery.framework');
@@ -19,14 +20,14 @@ $doc->addStylesheet('templates/' . $renderer->template . '/css/widgetkit.css');
 $doc->addStylesheet('templates/' . $renderer->template . '/css/template.css');
 $doc->addScript('templates/' . $renderer->template . '/warp/vendor/uikit/js/uikit.js');
 // $doc->addScript('templates/' . $renderer->template . '/js/ylib.default.min.js');
-// $doc->addScript('templates/' . $renderer->template . '/js/yootemplate.js');
+// $doc->addScript('templates/' . $renderer->template . '/js/ytemplate.js');
 // $doc->addScript('templates/' . $renderer->template . '/js/wi.offcanvas.js');
 $doc->addScript('templates/' . $renderer->template . '/js/template.js');
 
 
 ?>
 
-<?php if(!YooTemplateCore::$isAsync): ?>
+<?php if(!YTemplate::$isAsync): ?>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="<?php echo $renderer->language; ?>" lang="<?php echo $renderer->language; ?>" dir="<?php echo $renderer->direction; ?>">
 <head>
@@ -41,7 +42,7 @@ $doc->addScript('templates/' . $renderer->template . '/js/template.js');
 
 	<script type="text/javascript">
 		// (function($) {
-		// 	var yooTemplate = $.yooTemplate({
+		// 	var yTemplate = $.yTemplate({
 		// 		ajax : true,
 		// 	})
 		// })(jQuery);
@@ -49,10 +50,10 @@ $doc->addScript('templates/' . $renderer->template . '/js/template.js');
 
 </head>
 
-<body class="site">
+<body class="site <?php echo $pageClass ?>">
 
 	<!-- Header -->
-	<?php echo YooTemplateCore::RenderPartial('header'); ?>
+	<?php echo YTemplate::RenderPartial('header'); ?>
 
 	<div class="pagewrapper">
 		<div id="ajaxdock">
@@ -60,18 +61,18 @@ $doc->addScript('templates/' . $renderer->template . '/js/template.js');
 <?php endif; ?>
 
 
-			<?php echo YooTemplateCore::RenderPageInner(); ?>
+			<?php echo YTemplate::RenderPageInner(); ?>
 
 
-<?php if(!YooTemplateCore::$isAsync): ?>
+<?php if(!YTemplate::$isAsync): ?>
 
 		</div>
 	</div>
 
-	<?php echo YooTemplateCore::RenderPartial('footer'); ?>
+	<?php echo YTemplate::RenderPartial('footer'); ?>
 
 	<?php if($templateMode=='default'): ?>
-	<?php echo YooTemplateCore::RenderPartial('offcanvas'); ?>
+	<?php echo YTemplate::RenderPartial('offcanvas'); ?>
 	<?php endif; ?>
 
 </body>

@@ -4,7 +4,7 @@
 
 require_once __DIR__.'/helper.menu.php';
 
-class YooTemplateCore
+class YTemplate
 {
 
 	static $initialized = false;
@@ -16,11 +16,11 @@ class YooTemplateCore
 	static $base;
 	static $active;
 	static $home;
+	static $isHome;
 	static $jsData;
 	static $hasActiveItem = false;
 	static $activeItemContent;
 	static $homeContent;
-	static $menuItemParams;
 
 	static function init($basePath)
 	{
@@ -40,12 +40,12 @@ class YooTemplateCore
 
 		self::$jsData   = new StdClass();
 
-		self::$list      = YooTemplateHelperMenu::getList($params);
-		self::$base      = YooTemplateHelperMenu::getBase($params);
-		self::$active    = YooTemplateHelperMenu::getActive($params);
-		self::$home      = YooTemplateHelperMenu::getHome($params);
+		self::$list      = YTemplateHelperMenu::getList($params);
+		self::$base      = YTemplateHelperMenu::getBase($params);
+		self::$active    = YTemplateHelperMenu::getActive($params);
+		self::$home      = YTemplateHelperMenu::getHome($params);
 
-		self::$menuItemParams = self::$active->params;
+		self::$isHome    = ( self::$active->id == self::$home->id );
 
 		// self::prepareJsData();
 
@@ -87,7 +87,7 @@ class YooTemplateCore
 			self::$jsData->items[] = $jsitem;
 		}
 
-		if(self::$active->id && !self::$jsData->isHome) {
+		if(self::$active->id && !self::$isHome) {
 			// render grid in detailview mode
 			$activeItem = false;
 			foreach(self::$jsData->items as $i=>$item) {
@@ -109,31 +109,23 @@ class YooTemplateCore
 		ob_start();
 		include self::$layoutPath.'index.php';
 		$html = ob_get_clean();
-		return $html;
-	}
 
-	static function GetBodyClasses()
-	{
-		return "site layout_".self::GetPageLayout();
-	}
-
-	static function GetPageLayout()
-	{
-		return self::$menuItemParams->get('wi_page_layout','default');
-	}
-
-	static function GetMenuItemParam($id,$default)
-	{
-		return self::$menuItemParams->get($id,$default);
+		if(!self::$isAsync) {
+			return $html;
+		} else {
+			$data = new StdClass();
+			$data->html = $html;
+			return json_encode($data,JSON_PRETTY_PRINT);
+		}
 	}
 
 	static function RenderPageInner()
 	{
 		ob_start();
-		$id = self::GetPageLayout();
+		$id = 'default';
 		include self::$layoutPath.'page/'.$id.'.php';
 		$html = ob_get_clean();
-		return '<div yoo-template-page class="page-layout yoo-template-page-'.$id.'">'.$html.'</div>';
+		return '<div yoo-template-page class="yoo-template-page-'.$id.'">'.$html.'</div>';
 	}
 
 	static function RenderPartial($id)

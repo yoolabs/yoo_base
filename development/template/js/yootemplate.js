@@ -2,22 +2,22 @@
 
 
 /*
-	YooTemplate developed by YOOlabs / Jannik Mewes for Unizell
+	YTemplate developed by YOOlabs / Jannik Mewes for Unizell
 */
 
 (function($){
 
-	var yooTemplate;
+	var yTemplate;
 	var ajaxCache = 	{};
 
 
-	var YooTemplate = YLib.Class.extend({
+	var YTemplate = YLib.Class.extend({
 
 		includes : [YLib.Mixin.Events],
 
 		initialize : function(config) {
 
-			console.log('YooTemplate -- construct');
+			console.log('YTemplate -- construct');
 			this.config = config;
 
 			if(document.readyState == 'complete') {
@@ -33,7 +33,7 @@
 
 		_initialize : function() {
 
-			// console.log('YooTemplate -- init');
+			// console.log('YTemplate -- init');
 			var self = this;
 
 			self.$body = $('body');
@@ -48,12 +48,12 @@
 					self.isDetailView = true;
 					self.activeItem = this._getItemById(self.config.activeId);
 					self._animateTransition(offsetX,offsetY,1);
-					window.history.pushState({yooTemplate:{itemId:self.activeItem.id}}, self.config.siteName+' - '+self.activeItem.title, self.activeItem.route);
+					window.history.pushState({yTemplate:{itemId:self.activeItem.id}}, self.config.siteName+' - '+self.activeItem.title, self.activeItem.route);
 				} else {
 					// grid loaded in overview mode
 					self.isDetailView = false;
 					self.activeItem = false;
-					window.history.pushState({yooTemplate:{itemId:false}}, self.config.siteName+' - '+'Home', '/');
+					window.history.pushState({yTemplate:{itemId:false}}, self.config.siteName+' - '+'Home', '/');
 				}
 
 				// for(var i=0; i<self.config.items.length; i++) {
@@ -83,7 +83,7 @@
 		// setup DOM element events
 		setupEvents : function() {
 			var self = this;
-			self.$body.on('click','a,[data-yootemplate-link]',function(e) {
+			self.$body.on('click','a,[data-ytemplate-link]',function(e) {
 				// @TODO
 				if($(this).isLocalLink) {
 					e.preventDefault();
@@ -119,8 +119,8 @@
 			// 	}
 			// });
 			$(window).on('popstate', function(e){
-				if(e && e.originalEvent && e.originalEvent.state && e.originalEvent.state.yooTemplate) {
-					self.navigateTo(e.originalEvent.state.yooTemplate.itemId,false);
+				if(e && e.originalEvent && e.originalEvent.state && e.originalEvent.state.yTemplate) {
+					self.navigateTo(e.originalEvent.state.yTemplate.itemId,false);
 				}
 		    });
 		},
@@ -145,7 +145,7 @@
 				self.$body.removeClass('detailview');
 				setTimeout(function(){
 					document.title = self.config.siteName+' - '+'Home';
-					if(pushState) window.history.pushState({yooTemplate:{itemId:false}}, self.config.siteName+' - '+'Home', '/');
+					if(pushState) window.history.pushState({yTemplate:{itemId:false}}, self.config.siteName+' - '+'Home', '/');
 				},10);
 				setTimeout(function(){
 					if(self.activeItem) self.activeItem.$el.removeClass('animateZoomOut animate focused');
@@ -175,7 +175,7 @@
 					self.$body.addClass('detailview');
 					setTimeout(function(){
 						document.title = self.config.siteName+' - '+item.title;
-						if(pushState) window.history.pushState({yooTemplate:{itemId:itemId}}, self.config.siteName+' - '+item.title, item.route);
+						if(pushState) window.history.pushState({yTemplate:{itemId:itemId}}, self.config.siteName+' - '+item.title, item.route);
 					},10);
 					setTimeout(function(){
 						self.updateNav(item);
@@ -252,21 +252,21 @@
 
 	});
 
-	$.yooTemplate = function(config,extend) {
-		if(!yooTemplate) {
+	$.yTemplate = function(config,extend) {
+		if(!yTemplate) {
 			if(typeof extend == 'object') {
-				var CustomYooTemplate = YooTemplate.extend(extend);
-				yooTemplate = new CustomYooTemplate(config);
+				var CustomYTemplate = YTemplate.extend(extend);
+				yTemplate = new CustomYTemplate(config);
 			} else {
-				yooTemplate = new YooTemplate(config);
+				yTemplate = new YTemplate(config);
 			}
 		};
 		return {
-			goto : 			function(itemId) { yooTemplate.navigateTo(itemId,true); },
-			toOverview : 	function() { yooTemplate.navigateTo(false,true); },
-			navigate : 		function(direction) { yooTemplate.navigateDirection(direction); },
-			on : 			function(types, fn, context, once) { yooTemplate.on(types, fn, context, once); },
-			off : 			function(types, fn, context, once) { yooTemplate.off(types, fn, context); },
+			goto : 			function(itemId) { yTemplate.navigateTo(itemId,true); },
+			toOverview : 	function() { yTemplate.navigateTo(false,true); },
+			navigate : 		function(direction) { yTemplate.navigateDirection(direction); },
+			on : 			function(types, fn, context, once) { yTemplate.on(types, fn, context, once); },
+			off : 			function(types, fn, context, once) { yTemplate.off(types, fn, context); },
 		};
 	}
 

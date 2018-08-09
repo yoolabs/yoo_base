@@ -172,11 +172,11 @@
 
 			$toggles = $toggles.add($this.element);
 
-			console.log(this, $this);
+			// console.log(this, $this);
             this.on("click", function(e) {
                 e.preventDefault();
 				var $offcanvas = UI.$($this.options.target);
-				console.log('click',$offcanvas,$offcanvas.hasClass('uk-active'));
+				// console.log('click',$offcanvas,$offcanvas.hasClass('uk-active'));
 				if($offcanvas.hasClass('uk-active')) {
 	                WiOffcanvas.hide();
 				} else {
