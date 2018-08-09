@@ -14,7 +14,7 @@
 
 /* ----------------------- BASE STYLES  ------------------------------------------------------------ */
 
-html 								{ height:100%; }
+html 								{ height:100%; overflow:auto; overflow-x:hidden; overflow-y:auto }
 body 								{ min-height:100%; }
 .pagewrapper 						{  }
 .uk-container 						{
@@ -82,6 +82,8 @@ body 								{ min-height:100%; }
 		.ui.prompt				{ margin:-20px 0 15px 0; .font-size-small; color: #ffffff; background-color:@error-color; display: block; }
 	}
 
+	.fields						{ margin:0 0 10px; }
+
 	// .field.required-field>label:after{ content:"*"; display:inline-block; color:@error-color; font-size:22px; }
 }
 .chronoforms6_credits			{ display:none!important; }
@@ -93,6 +95,12 @@ body 								{ min-height:100%; }
 /* ----------------------- OTHER STYLES  ------------------------------------------------------------ */
 
 
+/* ----------------------- COOKIE BAR ------------------------------------------------------------ */
+
+.cpnb {
+	.cpnb-message				{ color:#fff; }
+	.cpnb-button				{ border-radius:0!important; background:@color-grey; }
+}
 
 
 
