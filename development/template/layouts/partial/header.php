@@ -1,20 +1,15 @@
-			<header class="header" id="header" role="banner">
-				<div class="uk-container uk-container-center">
-					<div class="header-inner clearfix">
+<header class="header" id="header" role="banner">
+	<div class="uk-container uk-container-center">
 
-						<!-- <div class="uk-clearfix"> -->
+			<a href="#offcanvas" data-uk-offcanvas id="menutoggle" class="uk-visible-small"><span></span></a>
 
-						<a class="brand uk-float-left yoogrid-link" id="logo" href="<?php echo JURI::Base(); ?>">
-							<jdoc:include type="modules" name="logo" style="none" />
-						</a>
+			<a class="brand" id="logo" href="<?php echo JURI::Base(); ?>">
+				<jdoc:include type="modules" name="logo" style="none" />
+			</a>
 
-						<!-- </div> -->
+			<div id="topmenu">
+				<jdoc:include type="modules" name="nav" style="none" />
+			</div>
 
-						<div id="topmenu">
-							<jdoc:include type="modules" name="nav" style="none" />
-						</div>
-
-
-					</div>
-				</div>
-			</header>
+	</div>
+</header>

@@ -2,6 +2,7 @@
 
 /* ---------------------- VARIABLES   ------------------------------------------------------------ */
 
+@color-lightgrey:					#ddd;
 @color-grey:						#999;
 
 @color-text:						#444;
@@ -25,7 +26,7 @@
 .font-size-subheading 				{ font-size:1.25rem; }
 
 
-.fixedtext {
+.fixedtext() {
 	@media(max-width:959px) {
 		.line-large 						{ display:inline; }
 		.line-small 						{ display:block; }
@@ -41,24 +42,26 @@
 
 /* ----------------------- TEXT STYLES  ------------------------------------------------------------ */
 
-body {
-	&								{ .font-default; }
+html {
 	&								{ font-size:15px; }
-	&								{ font-size: ~"calc(10px + .2vw)";  }
+	&								{ font-size: ~"calc(12px + .2vw)";  }
 	@media (min-width:960px) {
 		&							{ font-size:15px; }
-		&							{ font-size: ~"calc(10px + .2vw)"; }
+		&							{ font-size: ~"calc(10px + .3vw)"; }
 	}
 	@media (min-width:1600px) {
-		&							{ font-size:18px; }
+		&							{ font-size:15px; }
 	}
 }
-h1									{ .font-heading; .font-size-heading-xl; }
-h2									{ .font-heading; .font-size-heading-m; }
-h3									{ .font-heading; .font-size-heading-s; }
-h4									{ .font-subheading; .font-size-subheading; }
-h5									{ .font-subheading; font-size:1.0rem; }
-h6									{ .font-subheading; font-size:1.0rem; }
+body {
+	&								{ .font-default; .font-size-default; color:@color-text; }
+}
+h1, .uk-h1							{ .font-heading; .font-size-heading-xl; }
+h2, .uk-h2							{ .font-heading; .font-size-heading-m; }
+h3, .uk-h3							{ .font-heading; .font-size-heading-s; }
+h4, .uk-h4							{ .font-subheading; .font-size-subheading; }
+h5, .uk-h5							{ .font-subheading; font-size:1.0rem; }
+h6, .uk-h6							{ .font-subheading; font-size:1.0rem; }
 a									{ color:@color-link; }
 a:hover								{ color:@color-link-hover; text-decoration:none; }
 b,strong							{  }

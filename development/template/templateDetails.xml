@@ -39,6 +39,7 @@
 		<position>content-bottom</position>
 		<position>bottom</position>
 		<position>offcanvas</position>
+		<position>footer-top</position>
 		<position>footer</position>
 		<position>debug</position>
 	</positions>

@@ -119,10 +119,11 @@ module.exports = function(grunt) {
 	// Default task
 	// grunt.registerTask('default', [ 'copy' ]);
 	grunt.registerTask('release', [ 'clean:deployDir' , 'copy:template' , 'compress:template']);
+	grunt.registerTask('build', [ 'clean:deployDir' , 'copy:template' , 'compress:template']);
 	grunt.registerTask('stage', [ 'clean:deployDir' , 'copy:template' , 'copy:staging' ]);
 	grunt.registerTask('default', function() {
 		console.log('Choose one of the registered tasks:');
-		console.log('release - compile template and create a zip file');
+		console.log('build / release - compile template and create a zip file');
 		console.log('stage / watch:stage - compile template and copy to stage');
 	});
 
