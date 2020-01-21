@@ -1,0 +1,60 @@
+
+/* ----------------------- ONEPAGE STYLES  ------------------------------------------------------------ */
+// html.snapscroll{ overflow-y:auto;  }
+
+body.layout_onepage {
+
+	.wisnapscroll-wrapper {
+		&							{ .box-sizing(border-box); display:block; position:relative; }
+	}
+
+	@media (max-width:959px){
+		// .wisnapscroll-wrapper {
+			.onepageblock			{ min-height:50%;  width:auto; }
+		// }
+	}
+
+	.wisnapscroll & {
+		@media (min-width:960px){
+			&						{ height:100%; }
+			.yoo-template-page-onepage{ height:100%; }
+			.wisnapscroll-wrapper {
+				&					{ min-height:100%; height:100%; top:0; overflow:hidden;
+										overflow:auto; overflow-y:hidden; /* needed! */ -webkit-overflow-scrolling:touch;
+										-webkit-transform-style:preserve-3d;  .transform(translateZ(0)); }
+				.uk-notouch &		{ min-height:100vh; height:100vh; }
+				.onepageblock		{ min-height:100%; }
+				.uk-notouch & .onepageblock { min-height:100vh; }
+				.tm-fullscreen 		{ margin:0!important; }
+			}
+		}
+	}
+
+}
+
+/* ----------------------- NAV STYLES  ------------------------------------------------------------ */
+
+@media(min-width:960px) {
+	#dotnav-dock {
+		&								{ position:fixed; top:40%; bottom:40%; left:20px; .flex-block; .align-items(center); }
+		.onepage-pagination {
+			&							{ list-style:none; padding:0; margin:0; }
+			&>li						{ margin-bottom:10px; }
+			&>li>a						{ display:block; height: 20px; }
+			&>li>a>span					{ display:none; }
+			&>li>a:before				{ content:""; display:block; border:1px solid currentColor; background:transparent;
+											width:14px; height:14px; .border-radius(8px); .transition(~'color .7s'); }
+			&>li>a.active:before		{ background:currentColor; }
+		}
+	}
+}
+
+/* ----------------------- ONEPAGE BLOCK STYLES  ------------------------------------------------------------ */
+
+.onepageblock {
+	&								{ position:relative; overflow:hidden; padding:20px; box-sizing:border-box; }
+	@media(min-width:960px) {
+		&							{ min-height:100%; }
+		.uk-notouch &				{ min-height:100vh; }
+	}
+}

@@ -1,0 +1,189 @@
+
+@import "custom/prefixer.less";
+@import "uikit2/uikit.less";
+@import "custom/uikit2-custom.less";
+// @import "custom/wi.snapscroll.less";
+@import "custom/menutoggle.less";
+// @import "custom/scrollbar.less";
+@import "custom/link-styles.less";
+
+
+/* ----------------------- TEXT STYLES  ------------------------------------------------------------ */
+@import 'typo.less';
+
+
+/* ----------------------- BASE STYLES  ------------------------------------------------------------ */
+
+html 								{ height:100%; overflow:auto; overflow-x:hidden; overflow-y:auto }
+body 								{ min-height:100%; }
+.pagewrapper 						{  }
+.uk-container 						{
+	@media(max-width:479px) {
+		&							{ padding-left:10px; padding-right:10px; }
+	}
+}
+
+.uk-button							{ .font-heading; .font-size-heading-s; }
+
+
+.header {
+	&								{ background:#aaa; }
+	#logo							{ margin:10px auto 10px; display:block; max-width:80px; padding:5px 15px; width:40%; }
+	#menutoggle						{ .menutoggle1(); .menutoggle1-color(#fff); position:absolute; left:20px; top:25px; }
+	@media(min-width:768px) {
+		#logo						{ max-width:120px; padding:10px 25px; }
+	}
+	@media(min-width:960px) {
+		#logo						{ max-width:140px; padding:15px 40px; margin-top:-20px; }
+	}
+}
+
+.main {
+	&								{ }
+	@media(min-width:768px) {
+		&							{ min-height:400px; padding:50px 0; }
+	}
+}
+
+.footer-top {
+	&								{ background:#aaa; }
+}
+
+.footer {
+	&								{ background:#666; }
+}
+
+.uk-offcanvas-bar {
+	&								{ background-color:#444; }
+}
+
+
+
+
+/* ----------------------- COOKIEBAR STYLES  ------------------------------------------------------------ */
+
+#cpnb.cpnb {
+	&								{ position:relative!important; height:155px; background:@color-grey!important;; }
+	.cpnb-outer						{ position:fixed!important; }
+	@media(min-width:480px) {
+		&							{ height:140px;  }
+	}
+	@media(min-width:768px) {
+		&							{ height:75px;  }
+		.cpnb-inner					{ display: flex!important; text-align: left!important; padding: 10px 20px; }
+		.cpnb-message				{ flex:1; text-align: left!important;  }
+		.cpnb-buttons				{ width:auto!important; }
+	}
+	@media(min-width:960px) {
+		&							{ height:50px;  }
+	}
+	// @media(min-width:1220px) {
+	// 	&							{ height:50px;  }
+	// }
+	// @media(min-width:1600px) {
+	// 	&							{ height:50px;  }
+	// }
+}
+
+
+
+/* ----------------------- NAV STYLES  ------------------------------------------------------------ */
+
+.nav {
+	&						{ display:none; }
+	&						{ display:block; list-style:none; padding:0; margin:0; }
+	&>li					{ display:inline-block; position:relative; }
+	&>li>span,
+	&>li>a					{ padding:10px 0; margin:0 10px; display:block; }
+	&>li>a:hover			{  }
+	&>li:hover>ul			{ display:block; }
+	&>li>ul {
+		&					{ display:none; list-style:none; padding:0px 0; margin:0; }
+		&>li>span,
+		&>li>a				{ display:block; padding:10px; }
+	}
+}
+
+.uk-offcanvas-bar .nav {
+	&						{ list-style:none; padding:20px 0; margin:0; }
+	&>li>span,
+	&>li>a					{ display:block; padding:8px 20px; }
+	&>li.active>a,
+	&>li>a:hover			{  }
+	&>li>ul {
+		&					{ list-style:none; padding:0px 0; margin:0; }
+		&>li>span,
+		&>li>a				{ display:block; padding:8px 20px 8px 35px; }
+	}
+}
+
+// .breadcrumb {
+// 	&							{ list-style:none; padding:0; margin:-20px 0 20px; }
+// 	li							{ display:inline-block; }
+// }
+
+
+/* ----------------------- CONTENT STYLES  ------------------------------------------------------------ */
+
+
+
+
+
+
+/* ----------------------- FORM STYLES  ------------------------------------------------------------ */
+
+// .ui.message						{ max-width:500px; margin:0 auto!important; box-sizing:border-box; }
+// .ui.message .header:not(.ui)	{ .font-size-default()!important; }
+//
+// .ui.form.uk-form {
+// 	@error-color : #cc0a35;
+// 	&							{ width:100%; max-width:500px; margin:0 auto; padding:20px 0; }
+// 	.ui.button					{ .uk-button(); min-width:240px; }
+//
+// 	label						{ display:none!important; }
+// 	.field						{ margin-bottom:10px; }
+// 	.field textarea,
+// 	.field select,
+// 	.field button,
+// 	.field input {
+// 		&						{ width:100%; .box-sizing(border-box); margin-bottom:0; padding:8px 15px; height:36px; border:0;
+// 		 								background:transparent; border:none; border-bottom:1px solid #fff; color:#fff; }
+// 		&:focus					{ background:transparent; border-bottom:1px solid #fff; color:#fff; }
+// 		&::-webkit-input-placeholder 	{ color:#fff; .font-size-small; }
+// 		&::-moz-placeholder 			{ color:#fff; .font-size-small; }
+// 		&:-ms-input-placeholder 		{ color:#fff; .font-size-small; }
+// 		&:-moz-placeholder 				{ color:#fff; .font-size-small; }
+// 	}
+// 	.field textarea				{ height:100px; background:@color-grey; border:none; padding:15px; height:200px; margin-top:10px; }
+// 	.field textarea:focus		{ background:@color-grey; }
+//
+// 	.field.error {
+// 		textarea,select,input	{ border-color:@error-color;  }
+// 		.ui.prompt				{ margin:-20px 0 15px 0; .font-size-small; color: #ffffff; background-color:@error-color; display: block; }
+// 	}
+//
+// 	.fields						{ margin:0 0 10px; }
+//
+// 	// .field.required-field>label:after{ content:"*"; display:inline-block; color:@error-color; font-size:22px; }
+// }
+// .chronoforms6_credits			{ display:none!important; }
+
+
+
+
+
+/* ----------------------- OTHER STYLES  ------------------------------------------------------------ */
+
+
+/* ----------------------- COOKIE BAR ------------------------------------------------------------ */
+
+.cpnb {
+	.cpnb-message				{ color:#fff; }
+	.cpnb-button				{ border-radius:0!important; background:@color-grey; }
+}
+
+
+
+
+
+/**/

@@ -1,0 +1,68 @@
+
+
+/* ---------------------- VARIABLES   ------------------------------------------------------------ */
+
+@color-lightgrey:					#ddd;
+@color-grey:						#999;
+
+@color-text:						#444;
+@color-link:						#289ce6;
+@color-link-hover:					#44a6e6;
+
+.font-default 						{ font-family: 'Open Sans', Helvetica, sans-serif; color:inherit; letter-spacing:0; font-weight:300; line-height:1.6; }
+.font-heading 						{ font-family: 'Open Sans', Helvetica, sans-serif; text-transform:uppercase; line-height:1.6;
+										text-transform:uppercase; color:inherit; font-style:normal; font-weight:400; letter-spacing:2px; font-weight:300; }
+.font-subheading 					{ font-family: 'Open Sans', Helvetica, sans-serif; line-height:1.6;
+										text-transform:uppercase; color:inherit; font-style:normal; font-weight:400; letter-spacing:2px; }
+
+
+.font-size-default 					{ font-size:.95rem;  }
+.font-size-small 					{ font-size:0.85rem; }
+
+.font-size-heading-xl 				{ font-size:2.5rem; }
+.font-size-heading-l 				{ font-size:1.6rem; }
+.font-size-heading-m 				{ font-size:1.25rem; }
+.font-size-heading-s 				{ font-size:1.0rem; }
+.font-size-subheading 				{ font-size:1.25rem; }
+
+
+.fixedtext() {
+	@media(max-width:959px) {
+		.line-large 						{ display:inline; }
+		.line-small 						{ display:block; }
+	}
+	@media(min-width:960px) {
+		.line-large 						{ display:block; }
+		.line-small 						{ display:inline; }
+	}
+}
+
+
+
+
+/* ----------------------- TEXT STYLES  ------------------------------------------------------------ */
+
+html {
+	&								{ font-size:15px; }
+	&								{ font-size: ~"calc(12px + .2vw)";  }
+	@media (min-width:960px) {
+		&							{ font-size:15px; }
+		&							{ font-size: ~"calc(10px + .3vw)"; }
+	}
+	@media (min-width:1600px) {
+		&							{ font-size:15px; }
+	}
+}
+body {
+	&								{ .font-default; .font-size-default; color:@color-text; }
+}
+h1, .uk-h1							{ .font-heading; .font-size-heading-xl; }
+h2, .uk-h2							{ .font-heading; .font-size-heading-m; }
+h3, .uk-h3							{ .font-heading; .font-size-heading-s; }
+h4, .uk-h4							{ .font-subheading; .font-size-subheading; }
+h5, .uk-h5							{ .font-subheading; font-size:1.0rem; }
+h6, .uk-h6							{ .font-subheading; font-size:1.0rem; }
+a									{ color:@color-link; }
+a:hover								{ color:@color-link-hover; text-decoration:none; }
+b,strong							{  }
+small 								{ .font-size-small; }

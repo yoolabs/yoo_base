@@ -1,0 +1,10 @@
+
+{
+	"preview_styles" : "font-family font-size font-weight font-style text-decoration text-transform color",
+	"block_formats" : "Paragraph=p; Headline 1=h2; Headline 2=h3; Headline 3=h4; Headline 4=h5; Preformatted=pre",
+	"style_formats" : [
+		{"title": "Red text", "inline": "span", "classes":"color-magenta" },
+		{"title": "Underlined text", "inline": "span", "style":{"text-decoration":"underlined"} },
+		{"title": "Headline block", "block": "h2", "classes":"color-magenta", "style":{"text-decoration":"underlined"} }
+	]
+}

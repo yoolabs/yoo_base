@@ -1,0 +1,17 @@
+.link-underline-center(@color:currentColor) {
+	&							{ position:relative; }
+	&:hover						{ text-decoration:none!important; }
+	&:before					{ content:""; position:absolute; left:50%;right:50%; bottom:18px; height:1px;
+									.transition(~'right .3s, left .3s'); background:@color; }
+	&.uk-active:before,
+	&:hover:before				{ right:0; left:0; }
+}
+
+.link-underline-toright(@color:currentColor) {
+	&							{ position:relative; }
+	&:hover						{ text-decoration:none!important; }
+	&:before					{ content:""; position:absolute; left:0%;right:100%; bottom:18px; height:1px;
+									.transition(~'right .3s, left .3s'); background:@color; }
+	&.uk-active:before,
+	&:hover:before				{ right:0; }
+}
