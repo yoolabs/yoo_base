@@ -94,7 +94,7 @@ class JDocumentRendererYooModulesGrid extends JDocumentRenderer
 		elseif($params['match']=='1') $match =  'data-uk-grid-match';
 		else $match = 'data-uk-grid-match="{target:\'' . $params['match'] . '\'}"';
 
-		$buffer = "<div class=\"$gridclasses\" match data-uk-grid-margin >\n$buffer\n</div>";
+		$buffer = "<div class=\"$gridclasses\" $match data-uk-grid-margin >\n$buffer\n</div>";
 
 		return $buffer;
 	}

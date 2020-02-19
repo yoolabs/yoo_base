@@ -73,13 +73,13 @@ Added as a replacement to yootheme's module grid system, ymodulesgrid can be use
 Use following attributes to specify the rendered layout:
 
 * _small="1"_ - smaller grid spacing on mobile devices
-* _match="..." - value "1" - auto match column height. provide a css class (typically .uk-panel) to set matched height on subelements.
+* _match="..."_ - value "1" - auto match column height. provide a css class (typically .uk-panel) to set matched height on subelements.
 * _cols_ - specify column count for various page sizes (cols, cols-small, cols-medium, cols-large, cols-xlarge). 
 
 __Example:__
 
 ```html
-<jdoc:include type="yoomodulesgrid" name="[moduleposition]" style="xhtml" cols-medium="2" cols-large="4" />
+<jdoc:include type="yoomodulesgrid" name="[moduleposition]" style="xhtml" cols-medium="2" cols-large="4" match=".inner" />
 ```
 
 The example would render a grid displaying 1 column on mobiles, 2 on medium devices and 4 on large devices.
