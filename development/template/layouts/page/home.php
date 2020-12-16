@@ -1,5 +1,5 @@
 <?php
-<%= banner %>
+___phpbanner___;
 
 	$bgimage = YooGrid::$home->params->get('bgimage',false);
 

@@ -1,4 +1,6 @@
 <?php
+___phpbanner___;
+
 function modChrome_ukpanel( $module, &$params, &$attribs )
 {
 

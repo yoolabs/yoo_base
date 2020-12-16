@@ -1,5 +1,5 @@
 <?php
-<%= banner %>
+___phpbanner___;
 
 
 $app             = JFactory::getApplication();

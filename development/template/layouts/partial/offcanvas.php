@@ -1,3 +1,7 @@
+<?php
+___phpbanner___;
+?>
+
 	<?php if (YTemplate::$renderer->countModules('offcanvas')) : ?>
 	<div id="offcanvas" class="uk-offcanvas">
 		<div class="uk-offcanvas-bar">

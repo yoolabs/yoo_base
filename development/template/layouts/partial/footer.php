@@ -1,3 +1,7 @@
+<?php
+___phpbanner___;
+?>
+
 <footer class="footer-top contentarea" id="footer-top" role="contentinfo">
 	<div class="uk-container uk-container-center">
 

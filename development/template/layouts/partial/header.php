@@ -1,3 +1,7 @@
+<?php
+___phpbanner___;
+?>
+
 <header class="header" id="header" role="banner">
 	<div class="uk-container uk-container-center">
 

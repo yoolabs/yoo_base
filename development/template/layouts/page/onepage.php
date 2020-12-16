@@ -1,5 +1,5 @@
 <?php
-<%= banner %>
+___phpbanner___;
 
 	// $bgimage = YTemplate::$home->params->get('bgimage',false);
 	JFactory::getDocument()->addScript('templates/' . YTemplate::$renderer->template . '/js/wi.snapscroll.js');

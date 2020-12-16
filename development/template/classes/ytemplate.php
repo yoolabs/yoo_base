@@ -1,5 +1,5 @@
 <?php
-<%= banner %>
+___phpbanner___;
 
 
 require_once __DIR__.'/helper.menu.php';

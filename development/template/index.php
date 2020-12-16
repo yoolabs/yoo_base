@@ -1,7 +1,5 @@
 <?php
-<%= banner %>
-
-defined('_JEXEC') or die;
+___phpbanner___;
 
 require_once __DIR__.'/renderer/ymodulesgrid.php';
 require_once __DIR__.'/classes/ytemplate.php';

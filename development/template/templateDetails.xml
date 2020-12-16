@@ -1,13 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE install PUBLIC "-//Joomla! 2.5//DTD template 1.0//EN" "http://www.joomla.org/xml/dtd/2.5/template-install.dtd">
 <extension version="3.1" type="template" client="site">
-	<name>yoo_base_2b</name>
-	<version>2.0b</version>
-	<creationDate>01/2017</creationDate>
-	<author>Jannik Mewes</author>
-	<authorEmail>info@yoolabs.com</authorEmail>
-	<copyright>Copyright (C) 2017 YOOlabs GmbH</copyright>
-	<description>YOOlabs - Base 2 beta </description>
+	<name>yoo_base_2</name>
+	<version>___version___</version>
+	<creationDate>___grunt.template.today('yyyy-mm-dd')___</creationDate>
+	<author>___author___</author>
+	<authorEmail>___author___</authorEmail>
+	<authorUrl>___author_url___</authorUrl>
+	<copyright>Copyright © ___grunt.template.today('yyyy')___, ___author___, All Rights Reserved.</copyright>
+	<description>___descr___</description>
+	<license>___license___</license>
+
 	<files>
 		<!-- <filename>component.php</filename> -->
 		<!-- <filename>error.php</filename> -->
