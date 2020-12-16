@@ -31,7 +31,7 @@ module.exports = function(grunt) {
 		meta: {
 			srcPath: '',
 			jsPath: 'js/',
-			deployPath: '../release/',
+			buildPath: '../build/',
 			stagePath: '../staging/'
 		},
 
@@ -39,7 +39,7 @@ module.exports = function(grunt) {
 
 	    clean: {
 		    deployDir: {
-				src: ['<%= meta.deployPath %>source/**/*'],
+				src: ['<%= meta.buildPath %>source/**/*'],
 				options: {
 					force: true // force cleanup outside of cwd
 				}
@@ -53,7 +53,7 @@ module.exports = function(grunt) {
 						expand: true,
 						dot: true,
 						cwd: '<%= meta.srcPath %>template/',
-						dest: '<%= meta.deployPath %>source/<%= pkg.name %>/',
+						dest: '<%= meta.buildPath %>source/<%= pkg.name %>/',
 						src: [
 							'**/*'
 						],
@@ -86,7 +86,7 @@ module.exports = function(grunt) {
 						expand: true,
 						dot: true,
 						src: [ '**/*.*' ],
-						cwd: '<%= meta.deployPath %>source/<%= pkg.name %>',
+						cwd: '<%= meta.buildPath %>source/<%= pkg.name %>',
 						dest: '<%= meta.stagePath %>templates/<%= pkg.name %>',
 					}
 				]
@@ -97,10 +97,10 @@ module.exports = function(grunt) {
 			template: {
 				options: {
 					mode: 'zip',
-					archive: '<%= meta.deployPath %><%= pkg.name %>-<%= pkg.version %>.zip'
+					archive: '<%= meta.buildPath %><%= pkg.name %>-<%= pkg.version %>.zip'
 				},
 				files: [{
-					cwd: '<%= meta.deployPath %>source/<%= pkg.name %>/',
+					cwd: '<%= meta.buildPath %>source/<%= pkg.name %>/',
 					src: ['**/*'],
 					// dest: '/',
 					expand: true
