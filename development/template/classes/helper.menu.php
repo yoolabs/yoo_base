@@ -1,5 +1,5 @@
 <?php
-<%= banner %>
+___phpbanner___;
 
 // nothing but a renamed copy of mod_menu helper class
 
@@ -73,7 +73,7 @@ class YTemplateHelperMenu
 						case 'separator':
 						case 'heading':
 							// No further action needed.
-							continue;
+							continue 2;
 
 						case 'url':
 							if ((strpos($item->link, 'index.php?') === 0) && (strpos($item->link, 'Itemid=') === false))
